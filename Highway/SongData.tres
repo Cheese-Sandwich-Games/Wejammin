@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=6 format=3 uid="uid://bjasux1j3v6e"]
+
+[ext_resource type="Script" uid="uid://wf852tnx72w3" path="res://Highway/songdata.gd" id="1_48hx0"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_48hx0"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_e6fa4"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_7o5ru"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_00mqs"]
+
+[resource]
+script = ExtResource("1_48hx0")
+node_spawn_timing = Array[CurveTexture]([SubResource("CurveTexture_48hx0"), SubResource("CurveTexture_e6fa4"), SubResource("CurveTexture_7o5ru"), SubResource("CurveTexture_00mqs")])
+metadata/_custom_type_script = "uid://wf852tnx72w3"
