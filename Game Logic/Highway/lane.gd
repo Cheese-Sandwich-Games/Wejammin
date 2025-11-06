@@ -2,6 +2,8 @@ extends Node2D
 class_name Lane
 
 
+const NOTE_ERROR_MARGIN: float = 10.0
+
 var music_note = preload("res://Game Logic/Highway/music_note.tscn")
 var lane_id: int
 
@@ -21,18 +23,25 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("lane_%s" % lane_id):
 		# Get the note added first to this lane (if any exist)
 		for note in current_notes.get_children():
-			var overlapping_notes: Array = note_hit_area.get_overlapping_areas()
-			
-			# Check if the note has been hit or not and give score. Then remove the note
-			if overlapping_notes.has(note):
-				Globals.combo += 1
-				Globals.notes_hit += 1
-				print("Note hit")
-			else:
-				Globals.combo = 0
-				Globals.notes_missed += 1
-				print("Note missed")
+			if note is MusicNote:
+				_handle_note_hit(note)
 			note.queue_free()
+			break
+
+
+func _handle_note_hit(note: MusicNote) -> void:
+	var overlapping_notes: Array[Area2D] = note_hit_area.get_overlapping_areas()
+	
+	# Check if the note has been hit or not and update score and combo
+	if overlapping_notes.has(note):
+		if note.position.distance_to(note_hit_area.position) <= NOTE_ERROR_MARGIN:
+			# Note has been perfectly hit
+			note.handle(true, true)
+		else:
+			note.handle(true, false)
+	else:
+		# Note has been missed
+		note.handle(false)
 
 
 func spawn_note() -> void:
