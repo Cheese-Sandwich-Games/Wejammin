@@ -1,6 +1,7 @@
 extends Node2D
 class_name MusicNote
 
+
 var move_tween: Tween
 
 @onready var life_timer = $LifeTimer
