@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qeuxcji02ouy"]
+
+[ext_resource type="Texture2D" uid="uid://bl0whf7c6raux" path="res://icon.svg" id="1_5fx48"]
+
+[node name="MusicNote" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5fx48")
