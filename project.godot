@@ -24,6 +24,7 @@ Settings="*res://settings.gd"
 
 folder_colors={
 "res://Game Logic/": "pink",
+"res://Music/": "orange",
 "res://Scenes/": "blue"
 }
 

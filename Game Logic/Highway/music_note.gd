@@ -18,4 +18,7 @@ func initialize(destination_point: Vector2, move_duration: float) -> void:
 
 func _on_life_timer_timeout() -> void:
 	# Destroy the note after it reaches the end of the lane
+	Globals.combo = 0
+	Globals.notes_missed += 1
+	print("Note missed")
 	queue_free()
