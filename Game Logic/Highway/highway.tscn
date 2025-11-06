@@ -13,3 +13,12 @@ script = ExtResource("1_idv8x")
 spawn_data = SubResource("CurveTexture_hodah")
 
 [node name="Lane" parent="." instance=ExtResource("2_sfw4x")]
+
+[node name="Lane2" parent="." instance=ExtResource("2_sfw4x")]
+position = Vector2(64, 0)
+
+[node name="Lane3" parent="." instance=ExtResource("2_sfw4x")]
+position = Vector2(128, 0)
+
+[node name="Lane4" parent="." instance=ExtResource("2_sfw4x")]
+position = Vector2(192, 0)

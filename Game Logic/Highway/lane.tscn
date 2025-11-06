@@ -10,3 +10,4 @@ script = ExtResource("1_3ngjr")
 [node name="NoteOrigin" type="Marker2D" parent="."]
 
 [node name="NoteDestination" type="Marker2D" parent="."]
+position = Vector2(0, 256)

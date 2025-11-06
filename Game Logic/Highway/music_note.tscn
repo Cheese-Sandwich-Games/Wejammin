@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://qeuxcji02ouy"]
+[gd_scene load_steps=3 format=3 uid="uid://qeuxcji02ouy"]
 
 [ext_resource type="Texture2D" uid="uid://bl0whf7c6raux" path="res://icon.svg" id="1_5fx48"]
+[ext_resource type="Script" uid="uid://i3cmf8qby8we" path="res://Game Logic/Highway/music_note.gd" id="1_h30m8"]
 
 [node name="MusicNote" type="Node2D"]
+script = ExtResource("1_h30m8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5fx48")
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=2 format=3 uid="uid://bdfo2ktxggpi6"]
+
+[ext_resource type="PackedScene" uid="uid://rg04q5kbhhcn" path="res://Game Logic/Highway/highway.tscn" id="1_jjgbg"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Highway" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(100, 100)
