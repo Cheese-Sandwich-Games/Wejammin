@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SongData" load_steps=6 format=3 uid="uid://bjasux1j3v6e"]
 
-[ext_resource type="Script" uid="uid://wf852tnx72w3" path="res://Highway/songdata.gd" id="1_48hx0"]
+[ext_resource type="Script" uid="uid://wf852tnx72w3" path="res://Game Logic/Highway/songdata.gd" id="1_48hx0"]
 
 [sub_resource type="CurveTexture" id="CurveTexture_48hx0"]
 

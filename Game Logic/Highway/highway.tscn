@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://rg04q5kbhhcn"]
+
+[ext_resource type="Script" uid="uid://b0m3k5ln5ivp4" path="res://Game Logic/Highway/highway.gd" id="1_idv8x"]
+[ext_resource type="PackedScene" uid="uid://cabn4yyf2alpj" path="res://Game Logic/Highway/lane.tscn" id="2_sfw4x"]
+
+[sub_resource type="Curve" id="Curve_idv8x"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_hodah"]
+curve = SubResource("Curve_idv8x")
+
+[node name="Highway" type="Node2D"]
+script = ExtResource("1_idv8x")
+spawn_data = SubResource("CurveTexture_hodah")
+
+[node name="Lane" parent="." instance=ExtResource("2_sfw4x")]

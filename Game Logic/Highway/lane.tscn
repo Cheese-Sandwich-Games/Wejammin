@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cabn4yyf2alpj"]
+
+[ext_resource type="Script" uid="uid://bj7ng4yomhrjl" path="res://Game Logic/Highway/lane.gd" id="1_3ngjr"]
+
+[node name="Lane" type="Node2D"]
+script = ExtResource("1_3ngjr")
+
+[node name="Notes" type="Node2D" parent="."]
+
+[node name="NoteOrigin" type="Marker2D" parent="."]
+
+[node name="NoteDestination" type="Marker2D" parent="."]
