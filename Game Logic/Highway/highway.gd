@@ -12,3 +12,9 @@ func spawn_note(lane_number: int) -> void:
 	# Verify the lane number is valid before trying to spawn the note
 	if lane is Lane:
 		lane.spawn_note()
+
+
+func clear_notes() -> void:
+	for child in get_children():
+		if child is Lane:
+			child.clear_notes()

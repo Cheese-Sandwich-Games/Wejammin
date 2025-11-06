@@ -13,3 +13,8 @@ func spawn_note() -> void:
 	# Add a note to this lane
 	var note_instance = music_note.instantiate()
 	current_notes.add_child(note_instance)
+
+
+func clear_notes() -> void:
+	for child in current_notes.get_children():
+		child.queue_free()
