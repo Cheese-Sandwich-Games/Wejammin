@@ -9,6 +9,43 @@ var song_position: float = 0.0
 var song_position_in_beats: int = 0
 var sec_per_beat: float = 0.0
 
+# Keep track of all the layers to change audio volume
+
+var arp_muted: bool = false
+var arp_tween: Tween
+var arp_volume: float = 1.0:
+	set(new_value):
+		arp_volume = new_value
+		set_audio_volume(1, new_value)
+
+var bass_muted: bool = false
+var bass_tween: Tween
+var bass_volume: float = 1.0:
+	set(new_value):
+		arp_volume = new_value
+		set_audio_volume(2, new_value)
+
+var drums_muted: bool = false
+var drums_tween: Tween
+var drums_volume: float = 1.0:
+	set(new_value):
+		arp_volume = new_value
+		set_audio_volume(3, new_value)
+
+var lead_muted: bool = false
+var lead_tween: Tween
+var lead_volume: float = 1.0:
+	set(new_value):
+		arp_volume = new_value
+		set_audio_volume(4, new_value)
+
+var pad_muted: bool = false
+var pad_tween: Tween
+var pad_volume: float = 1.0:
+	set(new_value):
+		arp_volume = new_value
+		set_audio_volume(5, new_value)
+
 @onready var bass_layer = $BassLayer
 @onready var drums_layer = $DrumsLayer
 @onready var lead_layer = $LeadLayer
@@ -60,17 +97,67 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	# Allow toggling on or off all the different layers of the song
 	if event.is_action_pressed("toggle_arp"):
-		toggle_audio_bus(1)
+		arp_muted = !arp_muted
+		
+		# Tween the volume change with a duration of how long it takes for notes to spawn and reach the bottom
+		if arp_tween is Tween:
+			arp_tween.kill()
+		arp_tween = create_tween()
+		
+		var target_volume: float = 0.0
+		if !arp_muted:
+			target_volume = 1.0
+		
+		arp_tween.tween_property(self, "arp_volume", target_volume, Settings.note_speed)
 	elif event.is_action_pressed("toggle_bass"):
-		toggle_audio_bus(2)
+		bass_muted = !bass_muted
+		
+		if bass_tween is Tween:
+			bass_tween.kill()
+		bass_tween = create_tween()
+		
+		var target_volume: float = 0.0
+		if !bass_muted:
+			target_volume = 1.0
+		
+		bass_tween.tween_property(self, "bass_volume", target_volume, Settings.note_speed)
 	elif event.is_action_pressed("toggle_drums"):
-		toggle_audio_bus(3)
+		drums_muted = !drums_muted
+		
+		if drums_tween is Tween:
+			drums_tween.kill()
+		drums_tween = create_tween()
+		
+		var target_volume: float = 0.0
+		if !drums_muted:
+			target_volume = 1.0
+		
+		drums_tween.tween_property(self, "drums_volume", target_volume, Settings.note_speed)
 	elif event.is_action_pressed("toggle_lead"):
-		toggle_audio_bus(4)
+		lead_muted = !lead_muted
+		
+		if lead_tween is Tween:
+			lead_tween.kill()
+		lead_tween = create_tween()
+		
+		var target_volume: float = 0.0
+		if !lead_muted:
+			target_volume = 1.0
+		
+		lead_tween.tween_property(self, "lead_volume", target_volume, Settings.note_speed)
 	elif event.is_action_pressed("toggle_pad"):
-		toggle_audio_bus(5)
+		pad_muted = !pad_muted
+		
+		if pad_tween is Tween:
+			pad_tween.kill()
+		pad_tween = create_tween()
+		
+		var target_volume: float = 0.0
+		if !pad_muted:
+			target_volume = 1.0
+		
+		pad_tween.tween_property(self, "pad_volume", target_volume, Settings.note_speed)
 
 
-func toggle_audio_bus(bus_id: int) -> void:
-	var current_mute_status: bool = AudioServer.is_bus_mute(bus_id)
-	AudioServer.set_bus_mute(bus_id, !current_mute_status)
+func set_audio_volume(bus_id: int, value: float) -> void:
+	AudioServer.set_bus_volume_db(bus_id, linear_to_db(value))
