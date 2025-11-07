@@ -12,6 +12,7 @@ var lane_id: int
 @onready var note_origin = $NoteOrigin
 @onready var note_destination = $NoteDestination
 @onready var note_hit_area = $NoteDestination/NoteHitArea
+@onready var note_hit_animation = $NoteDestination/NoteHitArea/HitAnimation
 
 
 func _ready() -> void:
@@ -27,6 +28,10 @@ func _input(event: InputEvent) -> void:
 			if note is MusicNote:
 				_handle_note_hit(note)
 			break
+		
+		# Play a hit animation
+		note_hit_animation.stop()
+		note_hit_animation.play("hit")
 
 
 func _handle_note_hit(note: MusicNote) -> void:

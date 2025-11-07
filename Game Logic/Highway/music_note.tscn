@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://qeuxcji02ouy"]
 
-[ext_resource type="Texture2D" uid="uid://bl0whf7c6raux" path="res://icon.svg" id="1_5fx48"]
 [ext_resource type="Script" uid="uid://i3cmf8qby8we" path="res://Game Logic/Highway/music_note.gd" id="1_h30m8"]
+[ext_resource type="Texture2D" uid="uid://2v3gwxkh8d10" path="res://Assets/music_note.png" id="2_h30m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h30m8"]
 size = Vector2(8, 8)
@@ -10,8 +10,8 @@ size = Vector2(8, 8)
 script = ExtResource("1_h30m8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0625, 0.0625)
-texture = ExtResource("1_5fx48")
+position = Vector2(1, 1)
+texture = ExtResource("2_h30m8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h30m8")
