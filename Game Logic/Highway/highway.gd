@@ -2,13 +2,16 @@ extends Node2D
 class_name Highway
 
 
+@onready var lanes = $Lanes
+
+
 func spawn_notes_string(notes_binary: String) -> void:
 	var lane_number: int = 1
 	for note in notes_binary:
 		# A 1 on the binary string means a note
 		if note == "1":
 			# Get the given lane and add a note to it
-			var lane: Node = get_child(lane_number - 1)
+			var lane: Node = lanes.get_child(lane_number - 1)
 			
 			# Verify the lane number is valid before trying to spawn the note
 			if lane is Lane:
@@ -25,6 +28,6 @@ func spawn_notes_int(notes_binary: int) -> void:
 
 
 func clear_notes() -> void:
-	for child in get_children():
+	for child in lanes.get_children():
 		if child is Lane:
 			child.clear_notes()

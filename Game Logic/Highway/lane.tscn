@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://bl0whf7c6raux" path="res://icon.svg" id="2_85i5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ngjr"]
-size = Vector2(28, 28)
+size = Vector2(8, 8)
 
 [node name="Lane" type="Node2D"]
 script = ExtResource("1_3ngjr")
 
 [node name="NoteHitArea" type="Area2D" parent="."]
-position = Vector2(0, 200)
+position = Vector2(0, 125)
 
 [node name="Sprite2D" type="Sprite2D" parent="NoteHitArea"]
-scale = Vector2(0.21874997, 0.21874994)
+modulate = Color(1, 1, 1, 0.3764706)
+scale = Vector2(0.062499993, 0.06250006)
 texture = ExtResource("2_85i5p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteHitArea"]
@@ -24,4 +25,4 @@ shape = SubResource("RectangleShape2D_3ngjr")
 [node name="NoteOrigin" type="Marker2D" parent="."]
 
 [node name="NoteDestination" type="Marker2D" parent="."]
-position = Vector2(0, 256)
+position = Vector2(0, 167)

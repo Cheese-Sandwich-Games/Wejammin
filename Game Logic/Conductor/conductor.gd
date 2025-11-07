@@ -12,7 +12,7 @@ var sec_per_beat: float = 0.0
 
 func _ready() -> void:
 	sec_per_beat = 60.0 / song_data.bpm
-	Settings.note_speed = sec_per_beat * 4
+	Settings.note_speed = sec_per_beat * song_data.note_spawn_beat_offset
 	
 	play_song()
 
@@ -27,11 +27,12 @@ func _physics_process(_delta: float) -> void:
 		# Keep track of the songs position
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
-		var new_position_in_beats: int = int(floor(song_position / sec_per_beat))
+		var new_position_in_beats: int = floori(song_position / sec_per_beat)
 		
-		# When moving onto the next beat of the song emit a signal to spawn notes
+		# When moving onto the next beat of the song spawn notes
 		if new_position_in_beats != song_position_in_beats:
 			song_position_in_beats = new_position_in_beats
 			
-			if song_data.node_spawn_timing.has(song_position_in_beats):
-				highway.spawn_notes_string(song_data.node_spawn_timing.get(song_position_in_beats))
+			# Check the note spawn beat offset and spawn notes early to sync the time they need to be hit with the beat
+			if song_data.node_spawn_timing.has(song_position_in_beats + song_data.note_spawn_beat_offset):
+				highway.spawn_notes_string(song_data.node_spawn_timing.get(song_position_in_beats + song_data.note_spawn_beat_offset))
