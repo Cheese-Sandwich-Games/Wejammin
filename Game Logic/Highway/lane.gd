@@ -3,7 +3,7 @@ class_name Lane
 
 
 const NOTE_ERROR_MARGIN: float = 4.0
-const NOTE_HANDLE_MARGIN: float = 100.0
+const NOTE_HANDLE_MARGIN: float = 20.0
 
 var music_note = preload("res://Game Logic/Highway/music_note.tscn")
 var lane_id: int
@@ -11,7 +11,7 @@ var lane_id: int
 @onready var current_notes = $Notes
 @onready var note_origin = $NoteOrigin
 @onready var note_destination = $NoteDestination
-@onready var note_hit_area = $NoteHitArea
+@onready var note_hit_area = $NoteDestination/NoteHitArea
 
 
 func _ready() -> void:
@@ -34,13 +34,13 @@ func _handle_note_hit(note: MusicNote) -> void:
 	
 	# Check if the note has been hit or not and update score and combo
 	if overlapping_notes.has(note):
-		if note.position.distance_to(note_hit_area.position) <= NOTE_ERROR_MARGIN:
+		if note.global_position.distance_to(note_hit_area.global_position) <= NOTE_ERROR_MARGIN:
 			# Note has been perfectly hit
 			note.handle(true, true)
 		else:
 			note.handle(true, false)
 	else:
-		if note.position.distance_to(note_hit_area.position) <= NOTE_HANDLE_MARGIN:
+		if note.global_position.distance_to(note_hit_area.global_position) <= NOTE_HANDLE_MARGIN:
 			# Note has been missed
 			note.handle(false)
 

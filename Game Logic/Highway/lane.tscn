@@ -9,20 +9,19 @@ size = Vector2(8, 8)
 [node name="Lane" type="Node2D"]
 script = ExtResource("1_3ngjr")
 
-[node name="NoteHitArea" type="Area2D" parent="."]
+[node name="NoteOrigin" type="Marker2D" parent="."]
+
+[node name="NoteDestination" type="Node2D" parent="."]
 position = Vector2(0, 128)
 
-[node name="Sprite2D" type="Sprite2D" parent="NoteHitArea"]
+[node name="NoteHitArea" type="Area2D" parent="NoteDestination"]
+
+[node name="Sprite2D" type="Sprite2D" parent="NoteDestination/NoteHitArea"]
 modulate = Color(1, 1, 1, 0.3764706)
 scale = Vector2(0.062499993, 0.06250006)
 texture = ExtResource("2_85i5p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteHitArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteDestination/NoteHitArea"]
 shape = SubResource("RectangleShape2D_3ngjr")
 
 [node name="Notes" type="Node2D" parent="."]
-
-[node name="NoteOrigin" type="Marker2D" parent="."]
-
-[node name="NoteDestination" type="Marker2D" parent="."]
-position = Vector2(0, 128)
