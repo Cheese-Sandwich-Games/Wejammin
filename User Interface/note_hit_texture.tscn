@@ -8,6 +8,7 @@ atlas = ExtResource("1_xt6pa")
 region = Rect2(0, 0, 64, 32)
 
 [node name="NoteHitTexture" type="TextureRect"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(64, 32)
 anchors_preset = 8
 anchor_left = 0.5
