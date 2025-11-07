@@ -27,8 +27,10 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 		Globals.combo += 1
 		Globals.notes_hit += 1
 		if is_perfect:
+			Globals.perfect_hits += 1
 			print("Note perfect hit")
 		else:
+			Globals.good_hits += 1
 			print("Note good hit")
 	else:
 		Globals.combo = 0

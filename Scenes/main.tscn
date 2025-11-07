@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=5 format=3 uid="uid://bdfo2ktxggpi6"]
 
 [ext_resource type="PackedScene" uid="uid://rg04q5kbhhcn" path="res://Game Logic/Highway/highway.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://cpcv5xain2d7s" path="res://Game Logic/Conductor/conductor.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://cas5xagm450mw" path="res://User Interface/note_hit_texture.tscn" id="3_8gbba"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_bo1nx"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Highway" parent="." instance=ExtResource("1_jjgbg")]
-position = Vector2(9, 8)
 
 [node name="Conductor" parent="." node_paths=PackedStringArray("highway") instance=ExtResource("2_bo1nx")]
 stream = SubResource("AudioStreamSynchronized_bo1nx")
 highway = NodePath("../Highway")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NoteHitTexture" parent="CanvasLayer" instance=ExtResource("3_8gbba")]

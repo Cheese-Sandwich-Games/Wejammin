@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cas5xagm450mw"]
+
+[ext_resource type="Texture2D" uid="uid://bwuqmlb3yuewv" path="res://Assets/note_hit_types.png" id="1_xt6pa"]
+[ext_resource type="Script" uid="uid://f7uk1q7y47g0" path="res://User Interface/note_hit_texture.gd" id="2_c420o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo1nx"]
+atlas = ExtResource("1_xt6pa")
+region = Rect2(0, 0, 64, 32)
+
+[node name="NoteHitTexture" type="TextureRect"]
+custom_minimum_size = Vector2(64, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 32.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 16)
+texture = SubResource("AtlasTexture_bo1nx")
+script = ExtResource("2_c420o")
