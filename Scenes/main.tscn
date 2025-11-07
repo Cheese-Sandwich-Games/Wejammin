@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=3 format=3 uid="uid://bdfo2ktxggpi6"]
 
 [ext_resource type="PackedScene" uid="uid://rg04q5kbhhcn" path="res://Game Logic/Highway/highway.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cpcv5xain2d7s" path="res://Game Logic/Conductor/conductor.tscn" id="2_bo1nx"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Highway" parent="." instance=ExtResource("1_jjgbg")]
 position = Vector2(100, 100)
+
+[node name="Conductor" parent="." node_paths=PackedStringArray("highway") instance=ExtResource("2_bo1nx")]
+highway = NodePath("../Highway")

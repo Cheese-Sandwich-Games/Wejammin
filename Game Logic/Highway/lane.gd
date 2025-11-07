@@ -3,6 +3,7 @@ class_name Lane
 
 
 const NOTE_ERROR_MARGIN: float = 10.0
+const NOTE_HANDLE_MARGIN: float = 100.0
 
 var music_note = preload("res://Game Logic/Highway/music_note.tscn")
 var lane_id: int
@@ -25,7 +26,6 @@ func _input(event: InputEvent) -> void:
 		for note in current_notes.get_children():
 			if note is MusicNote:
 				_handle_note_hit(note)
-			note.queue_free()
 			break
 
 
@@ -40,8 +40,9 @@ func _handle_note_hit(note: MusicNote) -> void:
 		else:
 			note.handle(true, false)
 	else:
-		# Note has been missed
-		note.handle(false)
+		if note.position.distance_to(note_hit_area.position) <= NOTE_HANDLE_MARGIN:
+			# Note has been missed
+			note.handle(false)
 
 
 func spawn_note() -> void:

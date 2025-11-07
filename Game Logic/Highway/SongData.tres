@@ -1,16 +1,33 @@
-[gd_resource type="Resource" script_class="SongData" load_steps=6 format=3 uid="uid://bjasux1j3v6e"]
+[gd_resource type="Resource" script_class="SongData" load_steps=7 format=3 uid="uid://bjasux1j3v6e"]
 
+[ext_resource type="AudioStream" uid="uid://bqo3hbo7efi66" path="res://Music/test_arp_135bpm.mp3" id="1_3tlth"]
 [ext_resource type="Script" uid="uid://wf852tnx72w3" path="res://Game Logic/Highway/songdata.gd" id="1_48hx0"]
-
-[sub_resource type="CurveTexture" id="CurveTexture_48hx0"]
-
-[sub_resource type="CurveTexture" id="CurveTexture_e6fa4"]
-
-[sub_resource type="CurveTexture" id="CurveTexture_7o5ru"]
-
-[sub_resource type="CurveTexture" id="CurveTexture_00mqs"]
+[ext_resource type="AudioStream" uid="uid://knpt3yg0euuh" path="res://Music/test_pad_135bpm.mp3" id="2_hks23"]
+[ext_resource type="AudioStream" uid="uid://cmaq2up0h8e6v" path="res://Music/test_bass_135bpm.mp3" id="3_a8rtl"]
+[ext_resource type="AudioStream" uid="uid://dgosodxgsy7fc" path="res://Music/test_lead_135bpm.mp3" id="4_2f4v6"]
+[ext_resource type="AudioStream" uid="uid://8737teg75liv" path="res://Music/test_drums_135bpm.mp3" id="5_y6uxo"]
 
 [resource]
 script = ExtResource("1_48hx0")
-node_spawn_timing = Array[CurveTexture]([SubResource("CurveTexture_48hx0"), SubResource("CurveTexture_e6fa4"), SubResource("CurveTexture_7o5ru"), SubResource("CurveTexture_00mqs")])
+node_spawn_timing = Dictionary[int, String]({
+2: "0101",
+4: "1010",
+6: "0101",
+8: "1100",
+10: "0011",
+12: "1001",
+14: "0110",
+16: "1000",
+17: "0100",
+18: "0010",
+19: "0001",
+20: "0010",
+21: "0100",
+22: "1000"
+})
+arp_layer = ExtResource("1_3tlth")
+bass_layer = ExtResource("2_hks23")
+drums_layer = ExtResource("3_a8rtl")
+lead_layer = ExtResource("4_2f4v6")
+pad_layer = ExtResource("5_y6uxo")
 metadata/_custom_type_script = "uid://wf852tnx72w3"

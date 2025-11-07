@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpcv5xain2d7s"]
+
+[ext_resource type="Script" uid="uid://cigysnw2vare0" path="res://Game Logic/Conductor/conductor.gd" id="1_8exfk"]
+[ext_resource type="Resource" uid="uid://bjasux1j3v6e" path="res://Game Logic/Highway/SongData.tres" id="2_iyail"]
+
+[node name="Conductor" type="AudioStreamPlayer"]
+script = ExtResource("1_8exfk")
+song_data = ExtResource("2_iyail")
