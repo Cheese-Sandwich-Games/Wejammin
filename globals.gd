@@ -15,9 +15,11 @@ var notes_hit: int
 var notes_missed: int
 var good_hits: int:
 	set(new_value):
+		if new_value > good_hits:
+			good_hit.emit()
 		good_hits = new_value
-		good_hit.emit()
 var perfect_hits: int:
 	set(new_value):
+		if new_value > perfect_hits:
+			perfect_hit.emit()
 		perfect_hits = new_value
-		perfect_hit.emit()

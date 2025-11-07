@@ -8,19 +8,18 @@
 script = ExtResource("1_idv8x")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-position = Vector2(157, 85)
+position = Vector2(14, 76)
 texture = ExtResource("3_st6jg")
 
 [node name="Lanes" type="Node2D" parent="."]
 
 [node name="Lane" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(143, 9)
 
 [node name="Lane2" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(152, 9)
+position = Vector2(9, 0)
 
 [node name="Lane3" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(161, 9)
+position = Vector2(18, 0)
 
 [node name="Lane4" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(170, 9)
+position = Vector2(27, 0)
