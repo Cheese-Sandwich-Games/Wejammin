@@ -2,7 +2,7 @@ extends Node2D
 class_name Lane
 
 
-const NOTE_ERROR_MARGIN: float = 10.0
+const NOTE_ERROR_MARGIN: float = 4.0
 const NOTE_HANDLE_MARGIN: float = 100.0
 
 var music_note = preload("res://Game Logic/Highway/music_note.tscn")

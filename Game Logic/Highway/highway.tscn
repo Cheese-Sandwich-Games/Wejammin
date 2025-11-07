@@ -14,13 +14,13 @@ texture = ExtResource("3_st6jg")
 [node name="Lanes" type="Node2D" parent="."]
 
 [node name="Lane" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(143, 12)
+position = Vector2(143, 9)
 
 [node name="Lane2" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(152, 12)
+position = Vector2(152, 9)
 
 [node name="Lane3" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(161, 12)
+position = Vector2(161, 9)
 
 [node name="Lane4" parent="Lanes" instance=ExtResource("2_sfw4x")]
-position = Vector2(170, 12)
+position = Vector2(170, 9)

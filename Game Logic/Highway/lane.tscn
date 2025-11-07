@@ -10,7 +10,7 @@ size = Vector2(8, 8)
 script = ExtResource("1_3ngjr")
 
 [node name="NoteHitArea" type="Area2D" parent="."]
-position = Vector2(0, 125)
+position = Vector2(0, 128)
 
 [node name="Sprite2D" type="Sprite2D" parent="NoteHitArea"]
 modulate = Color(1, 1, 1, 0.3764706)
@@ -25,4 +25,4 @@ shape = SubResource("RectangleShape2D_3ngjr")
 [node name="NoteOrigin" type="Marker2D" parent="."]
 
 [node name="NoteDestination" type="Marker2D" parent="."]
-position = Vector2(0, 167)
+position = Vector2(0, 128)

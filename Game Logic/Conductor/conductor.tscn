@@ -4,5 +4,18 @@
 [ext_resource type="Resource" uid="uid://bjasux1j3v6e" path="res://Game Logic/Highway/SongData.tres" id="2_iyail"]
 
 [node name="Conductor" type="AudioStreamPlayer"]
+bus = &"arp"
 script = ExtResource("1_8exfk")
 song_data = ExtResource("2_iyail")
+
+[node name="BassLayer" type="AudioStreamPlayer" parent="."]
+bus = &"bass"
+
+[node name="DrumsLayer" type="AudioStreamPlayer" parent="."]
+bus = &"drums"
+
+[node name="LeadLayer" type="AudioStreamPlayer" parent="."]
+bus = &"lead"
+
+[node name="PadLayer" type="AudioStreamPlayer" parent="."]
+bus = &"pad"

@@ -35,8 +35,8 @@ node_spawn_timing = Dictionary[int, String]({
 42: "0001"
 })
 arp_layer = ExtResource("1_3tlth")
-bass_layer = ExtResource("2_hks23")
-drums_layer = ExtResource("3_a8rtl")
+bass_layer = ExtResource("3_a8rtl")
+drums_layer = ExtResource("5_y6uxo")
 lead_layer = ExtResource("4_2f4v6")
-pad_layer = ExtResource("5_y6uxo")
+pad_layer = ExtResource("2_hks23")
 metadata/_custom_type_script = "uid://wf852tnx72w3"
