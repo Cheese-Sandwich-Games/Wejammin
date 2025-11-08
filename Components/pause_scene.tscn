@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://w4pjbq0cqg2i"]
+
+[ext_resource type="Script" uid="uid://bbvm5b46d8o5i" path="res://Game Logic/Basic Functionality/PauseComponent.gd" id="1_8spke"]
+[ext_resource type="PackedScene" uid="uid://cy2ip55vite3o" path="res://Components/pause_menu.tscn" id="3_1mxju"]
+
+[node name="PauseMenu" type="Node2D"]
+
+[node name="PauseComponent" type="Node2D" parent="." node_paths=PackedStringArray("pause_menu")]
+script = ExtResource("1_8spke")
+pause_menu = NodePath("../Pause Menu")
+metadata/_custom_type_script = "uid://bbvm5b46d8o5i"
+
+[node name="Pause Menu" parent="." instance=ExtResource("3_1mxju")]
+visible = false
+
+[connection signal="game_paused" from="PauseComponent" to="." method="_on_pause_component_game_paused"]
+[connection signal="game_unpaused" from="PauseComponent" to="." method="_on_pause_component_game_unpaused"]
