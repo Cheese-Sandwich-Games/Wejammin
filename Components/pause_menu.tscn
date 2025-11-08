@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cy2ip55vite3o"]
 
-[ext_resource type="Script" uid="uid://dmbhcdsgc75g1" path="res://pause_menu.gd" id="1_i4170"]
+[ext_resource type="Script" uid="uid://dmbhcdsgc75g1" path="res://Game Logic/Basic Functionality/pausing/pause_menu.gd" id="1_i4170"]
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3

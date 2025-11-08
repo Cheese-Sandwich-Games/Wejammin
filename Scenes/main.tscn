@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=4 format=3 uid="uid://bdfo2ktxggpi6"]
 
 [ext_resource type="PackedScene" uid="uid://w4pjbq0cqg2i" path="res://Components/pause_scene.tscn" id="1_jjgbg"]
+[ext_resource type="Material" uid="uid://bncmkgal7jj37" path="res://Shading/shaderMat.tres" id="2_bo1nx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bo1nx"]
 
 [node name="Main" type="Node2D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_jjgbg")]
 position = Vector2(512, 256)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+position = Vector2(592, 328)
+
+[node name="CrtShader" type="CanvasLayer" parent="Camera2D"]
+process_mode = 3
+
+[node name="Shader" type="MeshInstance2D" parent="Camera2D/CrtShader"]
+process_mode = 4
+material = ExtResource("2_bo1nx")
+position = Vector2(579.1332, 316.20142)
+scale = Vector2(-1170.5518, 663.96075)
+mesh = SubResource("BoxMesh_bo1nx")
