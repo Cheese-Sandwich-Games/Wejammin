@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b517xhew7qoin"]
+[gd_scene load_steps=4 format=3 uid="uid://b517xhew7qoin"]
 
 [ext_resource type="Texture2D" uid="uid://bwuqmlb3yuewv" path="res://Assets/note_hit_types.png" id="1_4wa7s"]
 [ext_resource type="Script" uid="uid://bh0vluee3x7ny" path="res://User Interface/game_status.gd" id="1_44bcr"]
-[ext_resource type="FontFile" uid="uid://d8fssplohxbk" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels Tiny.ttf" id="2_4wa7s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44bcr"]
 atlas = ExtResource("1_4wa7s")
@@ -34,22 +33,3 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 16)
 texture = SubResource("AtlasTexture_44bcr")
-
-[node name="ComboLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -25.5
-offset_right = 26.0
-offset_bottom = 9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_4wa7s")
-theme_override_font_sizes/font_size = 8
-text = "COMBO
-0"
-horizontal_alignment = 1

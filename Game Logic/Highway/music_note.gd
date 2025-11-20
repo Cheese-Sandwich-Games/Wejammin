@@ -37,7 +37,7 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 		Globals.notes_missed += 1
 		print("Note missed")
 	
-	print("Combo: ", Globals.combo, " Notes hit: ", Globals.notes_hit, " Notes missed: ", Globals.notes_missed)
+	print("Combo: ", Globals.combo, " Notes hit: ", Globals.notes_hit, " Notes missed: ", Globals.notes_missed, " Perfect notes: ", Globals.perfect_hits, " Good notes: ", Globals.good_hits)
 	
 	# Delete a note that has been handled
 	queue_free()

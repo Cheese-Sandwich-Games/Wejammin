@@ -4,13 +4,11 @@ extends Control
 var bounce_tween: Tween
 
 @onready var note_hit_texture = $NoteHitTexture
-@onready var combo_label = $ComboLabel
 
 
 func _ready() -> void:
 	Globals.good_hit.connect(_on_good_hit)
 	Globals.perfect_hit.connect(_on_perfect_hit)
-	Globals.combo_changed.connect(_on_combo_changed)
 
 
 func show_hit(is_perfect: bool) -> void:
@@ -44,7 +42,3 @@ func _on_good_hit() -> void:
 
 func _on_perfect_hit() -> void:
 	show_hit(true)
-
-
-func _on_combo_changed(new_combo: int) -> void:
-	combo_label.text = "COMBO\n%s" % new_combo
