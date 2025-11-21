@@ -13,7 +13,6 @@ config_version=5
 config/name="GameOff2025"
 run/main_scene="uid://bdfo2ktxggpi6"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/image="uid://co62ycbu2mc6i"
 config/icon="res://icon.svg"
 
 [autoload]
