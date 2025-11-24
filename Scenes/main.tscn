@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=10 format=3 uid="uid://bdfo2ktxggpi6"]
 
 [ext_resource type="PackedScene" uid="uid://rg04q5kbhhcn" path="res://Game Logic/Highway/highway.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://cpcv5xain2d7s" path="res://Game Logic/Conductor/conductor.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://b517xhew7qoin" path="res://User Interface/game_status.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://qcecjbxhboi" path="res://User Interface/dj.tscn" id="4_344ge"]
 [ext_resource type="PackedScene" uid="uid://ewu2xy5rcwv7" path="res://User Interface/audience.tscn" id="5_6bp64"]
@@ -19,8 +18,6 @@ width = 320
 height = 180
 fill_to = Vector2(0, 1)
 
-[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_bo1nx"]
-
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -29,10 +26,6 @@ centered = false
 
 [node name="Highway" parent="." instance=ExtResource("1_jjgbg")]
 position = Vector2(145, 9)
-
-[node name="Conductor" parent="." node_paths=PackedStringArray("highway") instance=ExtResource("2_bo1nx")]
-stream = SubResource("AudioStreamSynchronized_bo1nx")
-highway = NodePath("../Highway")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -59,10 +52,10 @@ offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("8_344ge")
 
+[node name="GameStatus" parent="CanvasLayer" instance=ExtResource("3_8gbba")]
+
 [node name="Mixer" parent="CanvasLayer" instance=ExtResource("7_ynf5e")]
 offset_left = 6.0
 offset_top = 92.0
 offset_right = 142.0
 offset_bottom = 181.0
-
-[node name="GameStatus" parent="CanvasLayer" instance=ExtResource("3_8gbba")]

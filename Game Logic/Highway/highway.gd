@@ -5,6 +5,10 @@ class_name Highway
 @onready var lanes = $Lanes
 
 
+func _ready() -> void:
+	Conductor.spawn_notes_string.connect(_on_notes_spawned)
+
+
 func spawn_notes_string(notes_binary: String) -> void:
 	var lane_number: int = 1
 	for note in notes_binary:
@@ -31,3 +35,7 @@ func clear_notes() -> void:
 	for child in lanes.get_children():
 		if child is Lane:
 			child.clear_notes()
+
+
+func _on_notes_spawned(notes_string: String) -> void:
+	spawn_notes_string(notes_string)

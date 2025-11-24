@@ -1,28 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://rpltke1iyma0"]
+[gd_scene load_steps=7 format=3 uid="uid://rpltke1iyma0"]
 
+[ext_resource type="Script" uid="uid://cowr1rirly2hf" path="res://User Interface/mixer.gd" id="1_keesl"]
 [ext_resource type="Texture2D" uid="uid://cy44fllh7lh8p" path="res://Assets/MixerUI_Sliders.png" id="2_x6uig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_344ge"]
 atlas = ExtResource("2_x6uig")
-region = Rect2(0, 0, 30, 80)
+region = Rect2(150, 0, 30, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bp64"]
 atlas = ExtResource("2_x6uig")
-region = Rect2(180, 0, 30, 80)
+region = Rect2(150, 80, 30, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynf5e"]
 atlas = ExtResource("2_x6uig")
-region = Rect2(0, 80, 30, 80)
+region = Rect2(150, 160, 30, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hptm8"]
 atlas = ExtResource("2_x6uig")
-region = Rect2(180, 80, 30, 80)
+region = Rect2(150, 240, 30, 80)
 
 [node name="Mixer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
 offset_bottom = 86.0
+mouse_filter = 2
+script = ExtResource("1_keesl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -33,22 +36,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="MixerSlider" type="TextureRect" parent="HBoxContainer"]
+[node name="BassSlider" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_344ge")
 stretch_mode = 2
 
-[node name="MixerSlider2" type="TextureRect" parent="HBoxContainer"]
+[node name="PadSlider" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_6bp64")
 stretch_mode = 2
 
-[node name="MixerSlider3" type="TextureRect" parent="HBoxContainer"]
+[node name="ArpSlider" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ynf5e")
 stretch_mode = 2
 
-[node name="MixerSlider4" type="TextureRect" parent="HBoxContainer"]
+[node name="LeadSlider" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_hptm8")
 stretch_mode = 2
+
+[connection signal="gui_input" from="HBoxContainer/BassSlider" to="." method="_on_bass_slider_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/PadSlider" to="." method="_on_pad_slider_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/ArpSlider" to="." method="_on_arp_slider_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/LeadSlider" to="." method="_on_lead_slider_gui_input"]

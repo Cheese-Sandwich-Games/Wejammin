@@ -2,8 +2,9 @@ extends AudioStreamPlayer
 # Made with help of youtube tutorial "Complete Godot Rhythm Game Tutorial" by LegionGames
 
 
+signal spawn_notes_string
+
 @export var song_data: SongData
-@export var highway: Highway
 
 var song_position: float = 0.0
 var song_position_in_beats: int = 0
@@ -91,72 +92,72 @@ func _physics_process(_delta: float) -> void:
 			
 			# Check the note spawn beat offset and spawn notes early to sync the time they need to be hit with the beat
 			if song_data.node_spawn_timing.has(song_position_in_beats + song_data.note_spawn_beat_offset):
-				highway.spawn_notes_string(song_data.node_spawn_timing.get(song_position_in_beats + song_data.note_spawn_beat_offset))
+				spawn_notes_string.emit(song_data.node_spawn_timing.get(song_position_in_beats + song_data.note_spawn_beat_offset))
 
 
-func _input(event: InputEvent) -> void:
-	# Allow toggling on or off all the different layers of the song
-	if event.is_action_pressed("toggle_arp"):
-		arp_muted = !arp_muted
-		
-		# Tween the volume change with a duration of how long it takes for notes to spawn and reach the bottom
-		if arp_tween is Tween:
-			arp_tween.kill()
-		arp_tween = create_tween()
-		
-		var target_volume: float = 0.0
-		if !arp_muted:
-			target_volume = 1.0
-		
-		arp_tween.tween_property(self, "arp_volume", target_volume, Settings.note_speed)
-	elif event.is_action_pressed("toggle_bass"):
-		bass_muted = !bass_muted
-		
-		if bass_tween is Tween:
-			bass_tween.kill()
-		bass_tween = create_tween()
-		
-		var target_volume: float = 0.0
-		if !bass_muted:
-			target_volume = 1.0
-		
-		bass_tween.tween_property(self, "bass_volume", target_volume, Settings.note_speed)
-	elif event.is_action_pressed("toggle_drums"):
-		drums_muted = !drums_muted
-		
-		if drums_tween is Tween:
-			drums_tween.kill()
-		drums_tween = create_tween()
-		
-		var target_volume: float = 0.0
-		if !drums_muted:
-			target_volume = 1.0
-		
-		drums_tween.tween_property(self, "drums_volume", target_volume, Settings.note_speed)
-	elif event.is_action_pressed("toggle_lead"):
-		lead_muted = !lead_muted
-		
-		if lead_tween is Tween:
-			lead_tween.kill()
-		lead_tween = create_tween()
-		
-		var target_volume: float = 0.0
-		if !lead_muted:
-			target_volume = 1.0
-		
-		lead_tween.tween_property(self, "lead_volume", target_volume, Settings.note_speed)
-	elif event.is_action_pressed("toggle_pad"):
-		pad_muted = !pad_muted
-		
-		if pad_tween is Tween:
-			pad_tween.kill()
-		pad_tween = create_tween()
-		
-		var target_volume: float = 0.0
-		if !pad_muted:
-			target_volume = 1.0
-		
-		pad_tween.tween_property(self, "pad_volume", target_volume, Settings.note_speed)
+func toggle_bass() -> bool:
+	bass_muted = !bass_muted
+	
+	if bass_tween is Tween:
+		bass_tween.kill()
+	bass_tween = create_tween()
+	
+	var target_volume: float = 0.0
+	if !bass_muted:
+		target_volume = 1.0
+	
+	bass_tween.tween_property(self, "bass_volume", target_volume, 1.0)
+	
+	return bass_muted
+
+
+func toggle_pad() -> bool:
+	pad_muted = !pad_muted
+	
+	if pad_tween is Tween:
+		pad_tween.kill()
+	pad_tween = create_tween()
+	
+	var target_volume: float = 0.0
+	if !pad_muted:
+		target_volume = 1.0
+	
+	pad_tween.tween_property(self, "pad_volume", target_volume, 1.0)
+	
+	return pad_muted
+
+
+func toggle_arp() -> bool:
+	arp_muted = !arp_muted
+	
+	# Tween the volume change with a duration of how long it takes for notes to spawn and reach the bottom
+	if arp_tween is Tween:
+		arp_tween.kill()
+	arp_tween = create_tween()
+	
+	var target_volume: float = 0.0
+	if !arp_muted:
+		target_volume = 1.0
+	
+	arp_tween.tween_property(self, "arp_volume", target_volume, 1.0)
+	
+	return arp_muted
+
+
+func toggle_lead() -> bool:
+	lead_muted = !lead_muted
+	
+	if lead_tween is Tween:
+		lead_tween.kill()
+	lead_tween = create_tween()
+	
+	var target_volume: float = 0.0
+	if !lead_muted:
+		target_volume = 1.0
+	
+	lead_tween.tween_property(self, "lead_volume", target_volume, 1.0)
+	
+	return lead_muted
 
 
 func set_audio_volume(bus_id: int, value: float) -> void:
