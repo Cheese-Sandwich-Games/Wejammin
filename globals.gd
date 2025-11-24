@@ -5,6 +5,7 @@ extends Node
 signal combo_changed
 signal good_hit
 signal perfect_hit
+signal successful_toggle
 
 # Current music track statistics. Move this somewhere else if needed
 var combo: int:
@@ -23,3 +24,8 @@ var perfect_hits: int:
 		if new_value > perfect_hits:
 			perfect_hit.emit()
 		perfect_hits = new_value
+var successful_toggles: int = 0:
+	set(new_value):
+		if new_value > successful_toggles:
+			successful_toggle.emit()
+		successful_toggles = new_value

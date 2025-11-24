@@ -34,6 +34,9 @@ node_spawn_timing = Dictionary[int, String]({
 41: "0010",
 42: "0001"
 })
+layer_toggles = Dictionary[int, int]({
+10: 1
+})
 arp_layer = ExtResource("1_3tlth")
 bass_layer = ExtResource("3_a8rtl")
 drums_layer = ExtResource("5_y6uxo")

@@ -10,6 +10,7 @@ func _ready() -> void:
 	Globals.combo_changed.connect(_on_combo_changed)
 	Globals.perfect_hit.connect(_on_note_hit)
 	Globals.good_hit.connect(_on_note_hit)
+	Globals.successful_toggle.connect(_on_successful_toggle)
 
 
 func _on_combo_changed(new_combo: int) -> void:
@@ -17,15 +18,22 @@ func _on_combo_changed(new_combo: int) -> void:
 	await get_tree().process_frame
 	
 	combo_label.text = "Combo %s" % new_combo
+	score_label.text = "Notes hit %s / %s" % [Globals.notes_hit, Globals.notes_hit + Globals.notes_missed]
 	ratings_label.text = "Ratings %s" % calculate_ratings()
 
 
 func _on_note_hit() -> void:
 	await get_tree().process_frame
 	
-	score_label.text = "Notes hit %s" % (Globals.notes_hit)
+	score_label.text = "Notes hit %s / %s" % [Globals.notes_hit, Globals.notes_hit + Globals.notes_missed]
 	ratings_label.text = "Ratings %s" % calculate_ratings()
 
 
 func calculate_ratings() -> int:
-	return Globals.combo + Globals.perfect_hits * 2 + Globals.good_hits
+	return Globals.combo + Globals.perfect_hits * 2 + Globals.good_hits + Globals.successful_toggles * 20
+
+
+func _on_successful_toggle() -> void:
+	await get_tree().process_frame
+	
+	ratings_label.text = "Ratings %s" % calculate_ratings()

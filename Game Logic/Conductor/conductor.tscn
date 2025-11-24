@@ -19,3 +19,8 @@ bus = &"lead"
 
 [node name="PadLayer" type="AudioStreamPlayer" parent="."]
 bus = &"pad"
+
+[node name="LayerToggleTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="LayerToggleTimer" to="." method="_on_layer_toggle_timer_timeout"]

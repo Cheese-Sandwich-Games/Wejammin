@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 
 
 signal spawn_notes_string
+signal suggest_layer_toggle
 
 @export var song_data: SongData
 
@@ -13,6 +14,7 @@ var sec_per_beat: float = 0.0
 # Keep track of all the layers to change audio volume
 
 var arp_muted: bool = false
+var allow_arp_toggle: bool = false
 var arp_tween: Tween
 var arp_volume: float = 1.0:
 	set(new_value):
@@ -20,6 +22,7 @@ var arp_volume: float = 1.0:
 		set_audio_volume(1, new_value)
 
 var bass_muted: bool = false
+var allow_bass_toggle: bool = false
 var bass_tween: Tween
 var bass_volume: float = 1.0:
 	set(new_value):
@@ -27,6 +30,7 @@ var bass_volume: float = 1.0:
 		set_audio_volume(2, new_value)
 
 var drums_muted: bool = false
+var allow_drums_toggle: bool = false
 var drums_tween: Tween
 var drums_volume: float = 1.0:
 	set(new_value):
@@ -34,6 +38,7 @@ var drums_volume: float = 1.0:
 		set_audio_volume(3, new_value)
 
 var lead_muted: bool = false
+var allow_lead_toggle: bool = false
 var lead_tween: Tween
 var lead_volume: float = 1.0:
 	set(new_value):
@@ -41,6 +46,7 @@ var lead_volume: float = 1.0:
 		set_audio_volume(4, new_value)
 
 var pad_muted: bool = false
+var allow_pad_toggle: bool = false
 var pad_tween: Tween
 var pad_volume: float = 1.0:
 	set(new_value):
@@ -51,6 +57,7 @@ var pad_volume: float = 1.0:
 @onready var drums_layer = $DrumsLayer
 @onready var lead_layer = $LeadLayer
 @onready var pad_layer = $PadLayer
+@onready var layer_toggle_timer = $LayerToggleTimer
 
 
 func _ready() -> void:
@@ -90,12 +97,37 @@ func _physics_process(_delta: float) -> void:
 		if new_position_in_beats != song_position_in_beats:
 			song_position_in_beats = new_position_in_beats
 			
+			# Check if there should be a layer toggle
+			if song_data.layer_toggles.has(song_position_in_beats):
+				var layer_to_toggle: int = song_data.layer_toggles.get(song_position_in_beats)
+				# Layers are from 1 to 5. Bass, pad, arp, lead, drums
+				match layer_to_toggle:
+					1:
+						allow_bass_toggle = true
+					2:
+						allow_pad_toggle = true
+					3:
+						allow_arp_toggle = true
+					4:
+						allow_lead_toggle = true
+					5:
+						allow_drums_toggle = true
+				suggest_layer_toggle.emit(layer_to_toggle)
+				layer_toggle_timer.start()
+			
 			# Check the note spawn beat offset and spawn notes early to sync the time they need to be hit with the beat
 			if song_data.node_spawn_timing.has(song_position_in_beats + song_data.note_spawn_beat_offset):
 				spawn_notes_string.emit(song_data.node_spawn_timing.get(song_position_in_beats + song_data.note_spawn_beat_offset))
 
 
-func toggle_bass() -> bool:
+func toggle_bass(award_points: bool = true) -> bool:
+	if not allow_bass_toggle:
+		return bass_muted
+	allow_bass_toggle = false
+	
+	if award_points:
+		Globals.successful_toggles += 1
+	
 	bass_muted = !bass_muted
 	
 	if bass_tween is Tween:
@@ -111,7 +143,14 @@ func toggle_bass() -> bool:
 	return bass_muted
 
 
-func toggle_pad() -> bool:
+func toggle_pad(award_points: bool = true) -> bool:
+	if not allow_pad_toggle:
+		return pad_muted
+	allow_pad_toggle = false
+	
+	if award_points:
+		Globals.successful_toggles += 1
+	
 	pad_muted = !pad_muted
 	
 	if pad_tween is Tween:
@@ -127,7 +166,14 @@ func toggle_pad() -> bool:
 	return pad_muted
 
 
-func toggle_arp() -> bool:
+func toggle_arp(award_points: bool = true) -> bool:
+	if not allow_arp_toggle:
+		return arp_muted
+	allow_arp_toggle = false
+	
+	if award_points:
+		Globals.successful_toggles += 1
+	
 	arp_muted = !arp_muted
 	
 	# Tween the volume change with a duration of how long it takes for notes to spawn and reach the bottom
@@ -144,7 +190,14 @@ func toggle_arp() -> bool:
 	return arp_muted
 
 
-func toggle_lead() -> bool:
+func toggle_lead(award_points: bool = true) -> bool:
+	if not allow_lead_toggle:
+		return lead_muted
+	allow_lead_toggle = false
+	
+	if award_points:
+		Globals.successful_toggles += 1
+	
 	lead_muted = !lead_muted
 	
 	if lead_tween is Tween:
@@ -162,3 +215,17 @@ func toggle_lead() -> bool:
 
 func set_audio_volume(bus_id: int, value: float) -> void:
 	AudioServer.set_bus_volume_db(bus_id, linear_to_db(value))
+
+
+func _on_layer_toggle_timer_timeout() -> void:
+	if allow_arp_toggle:
+		toggle_arp(false)
+	if allow_bass_toggle:
+		toggle_bass(false)
+	if allow_pad_toggle:
+		toggle_pad(false)
+	if allow_lead_toggle:
+		toggle_lead(false)
+	if allow_drums_toggle:
+		# No toggle in the game for drums at the moment
+		allow_drums_toggle = false
