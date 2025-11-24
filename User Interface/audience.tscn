@@ -1,15 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://ewu2xy5rcwv7"]
+[gd_scene load_steps=4 format=3 uid="uid://ewu2xy5rcwv7"]
 
 [ext_resource type="Texture2D" uid="uid://co62ycbu2mc6i" path="res://Assets/audience_mockup.png" id="1_nl1sc"]
+[ext_resource type="Script" uid="uid://pha5vk0s6kw" path="res://User Interface/audience.gd" id="1_q1o8q"]
+[ext_resource type="FontFile" uid="uid://nugvgdqe6t6c" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels.ttf" id="3_fl5kr"]
 
 [node name="Audience" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_q1o8q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 offset_right = 121.0
 offset_bottom = 75.0
 texture = ExtResource("1_nl1sc")
+
+[node name="RequestLabel" type="Label" parent="TextureRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_fl5kr")
+theme_override_font_sizes/font_size = 8
+text = "Please toggle"
+horizontal_alignment = 1
+vertical_alignment = 1

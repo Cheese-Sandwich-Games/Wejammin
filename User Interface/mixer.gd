@@ -20,8 +20,6 @@ func _ready() -> void:
 
 func _on_suggest_layer_toggle(layer_to_toggle: int) -> void:
 	# Layers are from 1 to 5. Bass, pad, arp, lead, drums
-	var layers: Array[String] = ["", "bass", "pad", "arp", "lead", "drums"]
-	print("Please toggle ", layers[layer_to_toggle])
 	layer_toggle_timer.start()
 	SoundEffectPlayer.play_sound(cheering_audio)
 	match layer_to_toggle:
