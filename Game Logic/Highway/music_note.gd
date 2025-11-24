@@ -61,4 +61,6 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 
 func _on_life_timer_timeout() -> void:
 	# Destroy the note after it reaches the end of the lane
+	if is_hitted:
+		return
 	handle(false)

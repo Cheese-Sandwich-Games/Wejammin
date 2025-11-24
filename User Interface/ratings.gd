@@ -13,11 +13,16 @@ func _ready() -> void:
 
 
 func _on_combo_changed(new_combo: int) -> void:
+	# Await 1 frame for the ratings to be properly updated and avoid inconsistent signal handling order
+	await get_tree().process_frame
+	
 	combo_label.text = "Combo %s" % new_combo
 	ratings_label.text = "Ratings %s" % calculate_ratings()
 
 
 func _on_note_hit() -> void:
+	await get_tree().process_frame
+	
 	score_label.text = "Notes hit %s" % (Globals.notes_hit)
 	ratings_label.text = "Ratings %s" % calculate_ratings()
 
