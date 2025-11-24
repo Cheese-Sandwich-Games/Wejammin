@@ -15,7 +15,8 @@ var is_hitted: bool = false
 
 @export var sprite_ref: Sprite2D
 
-@export var note_fail_audio : AudioStream
+@export var note_fail_audio: AudioStream
+@export var boo_audio: AudioStream
 
 
 func initialize(destination_point: Vector2, move_duration: float) -> void:
@@ -51,16 +52,17 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 			#sprite_ref.hide()
 			#await good_particle_emitter.finished
 	else:
+		# When already on 0 combo play boo audio
+		if Globals.combo == 0:
+			SoundEffectPlayer.play_sound(boo_audio)
 		Globals.combo = 0
 		Globals.notes_missed += 1
-		SoundEffectPlayer.stream = note_fail_audio
-		SoundEffectPlayer.play()
+		SoundEffectPlayer.play_sound(note_fail_audio)
 		print("Note missed")
 
 	print("Combo: ", Globals.combo, " Notes hit: ", Globals.notes_hit, " Notes missed: ", Globals.notes_missed, " Perfect notes: ", Globals.perfect_hits, " Good notes: ", Globals.good_hits)
 	
 	# Delete a note that has been handled
-	
 	queue_free()
 
 
