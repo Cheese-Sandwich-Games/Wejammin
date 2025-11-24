@@ -7,10 +7,8 @@
 [node name="Ratings" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 120.0
-offset_bottom = 76.0
+offset_right = 116.0
+offset_bottom = 72.0
 script = ExtResource("1_w4a0u")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
