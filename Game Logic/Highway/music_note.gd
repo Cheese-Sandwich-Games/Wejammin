@@ -13,6 +13,8 @@ var is_hitted: bool = false
 #@export var good_particle_emitter: GPUParticles2D
 
 @export var sprite_ref: Sprite2D
+
+
 func initialize(destination_point: Vector2, move_duration: float) -> void:
 	# Add a little buffer at the end where the note keeps going
 	var move_duration_with_buffer = move_duration * (1 + MOVE_BUFFER)
