@@ -42,16 +42,16 @@ offset_top = 95.0
 offset_right = 233.0
 offset_bottom = 135.0
 
+[node name="OverlayTexture" type="TextureRect" parent="CanvasLayer"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("8_344ge")
+
 [node name="DJ" parent="CanvasLayer" instance=ExtResource("4_344ge")]
 offset_left = 193.0
 offset_top = 9.0
 offset_right = 233.0
 offset_bottom = 49.0
-
-[node name="OverlayTexture" type="TextureRect" parent="CanvasLayer"]
-offset_right = 320.0
-offset_bottom = 180.0
-texture = ExtResource("8_344ge")
 
 [node name="GameStatus" parent="CanvasLayer" instance=ExtResource("3_8gbba")]
 

@@ -1,6 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://qcecjbxhboi"]
+[gd_scene load_steps=9 format=3 uid="uid://qcecjbxhboi"]
 
-[ext_resource type="Texture2D" uid="uid://bpppdlsqp058h" path="res://Assets/dj_mockup.png" id="1_uegnw"]
+[ext_resource type="Texture2D" uid="uid://bmjtcof4eqshd" path="res://Assets/Cbackground.png" id="1_ne81s"]
+[ext_resource type="Texture2D" uid="uid://cymn0hjjodm50" path="res://Assets/haadbog_idle.png" id="2_ne81s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbkmp"]
+atlas = ExtResource("2_ne81s")
+region = Rect2(0, 0, 110, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wphk"]
+atlas = ExtResource("2_ne81s")
+region = Rect2(110, 0, 110, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i47t0"]
+atlas = ExtResource("2_ne81s")
+region = Rect2(0, 80, 110, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa2jx"]
+atlas = ExtResource("2_ne81s")
+region = Rect2(110, 80, 110, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b8vd"]
+atlas = ExtResource("2_ne81s")
+region = Rect2(0, 160, 110, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xh3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbkmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wphk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i47t0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa2jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b8vd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="DJ" type="Control"]
 layout_mode = 3
@@ -8,8 +52,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 121.0
 offset_bottom = 75.0
-texture = ExtResource("1_uegnw")
+color = Color(0.10800001, 0.13359998, 0.3, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 75.0
+texture = ExtResource("1_ne81s")
+stretch_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(56, 34)
+sprite_frames = SubResource("SpriteFrames_8xh3t")
+autoplay = "default"
