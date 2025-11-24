@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=11 format=3 uid="uid://bdfo2ktxggpi6"]
 
 [ext_resource type="PackedScene" uid="uid://rg04q5kbhhcn" path="res://Game Logic/Highway/highway.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://b517xhew7qoin" path="res://User Interface/game_status.tscn" id="3_8gbba"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkbfr6gb2sgd3" path="res://User Interface/ratings.tscn" id="6_344ge"]
 [ext_resource type="PackedScene" uid="uid://rpltke1iyma0" path="res://User Interface/mixer.tscn" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvvahdvg1idnw" path="res://Assets/RetroGameDeviceFrame.png" id="8_344ge"]
+[ext_resource type="FontFile" uid="uid://d8fssplohxbk" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels Tiny.ttf" id="8_ynf5e"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 offsets = PackedFloat32Array(0, 0.993333)
@@ -59,3 +60,12 @@ offset_left = 6.0
 offset_top = 92.0
 offset_right = 142.0
 offset_bottom = 181.0
+
+[node name="HelpLabel" type="Label" parent="CanvasLayer"]
+offset_left = 143.0
+offset_top = 144.0
+offset_right = 187.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("8_ynf5e")
+theme_override_font_sizes/font_size = 8
+text = "S  D   J  K"

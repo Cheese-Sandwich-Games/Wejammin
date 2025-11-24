@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qeuxcji02ouy"]
+[gd_scene load_steps=8 format=3 uid="uid://qeuxcji02ouy"]
 
 [ext_resource type="Script" uid="uid://i3cmf8qby8we" path="res://Game Logic/Highway/music_note.gd" id="1_h30m8"]
 [ext_resource type="Texture2D" uid="uid://2v3gwxkh8d10" path="res://Assets/music_note.png" id="2_h30m8"]
 [ext_resource type="Material" uid="uid://d0tnbyweu5smx" path="res://Assets/Particles/HitParticles.tres" id="3_vwq3f"]
 [ext_resource type="Material" uid="uid://cnur5ew6v4qpk" path="res://Assets/Particles/HItParticlesGood.tres" id="4_wln0w"]
+[ext_resource type="AudioStream" uid="uid://cir1v0tf5nui3" path="res://Assets/SoundEffects/ui_perfect.wav" id="5_bcjbf"]
+[ext_resource type="AudioStream" uid="uid://cwk5fuislabvk" path="res://Assets/SoundEffects/ui_fail.wav" id="6_2fnpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h30m8"]
 size = Vector2(8, 8)
@@ -12,6 +14,7 @@ size = Vector2(8, 8)
 script = ExtResource("1_h30m8")
 perfect_particle_emitter = NodePath("PerfectParticles")
 sprite_ref = NodePath("Sprite2D")
+note_fail_audio = ExtResource("6_2fnpp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -43,5 +46,9 @@ speed_scale = 3.0
 explosiveness = 1.0
 randomness = 0.3
 process_material = ExtResource("4_wln0w")
+
+[node name="PerfectHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bcjbf")
+bus = &"sfx"
 
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

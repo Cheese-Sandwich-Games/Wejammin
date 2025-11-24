@@ -8,11 +8,14 @@ var move_tween: Tween
 var is_hitted: bool = false
 
 @onready var life_timer = $LifeTimer
+@onready var perfect_hit_sound = $PerfectHitSound
 
 @export var perfect_particle_emitter: GPUParticles2D
 #@export var good_particle_emitter: GPUParticles2D
 
 @export var sprite_ref: Sprite2D
+
+@export var note_fail_audio : AudioStream
 
 
 func initialize(destination_point: Vector2, move_duration: float) -> void:
@@ -38,6 +41,7 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 			print("Note perfect hit")
 			perfect_particle_emitter.emitting = true
 			sprite_ref.hide()
+			perfect_hit_sound.play()
 			await perfect_particle_emitter.finished
 		elif !is_hitted:
 			is_hitted = true
@@ -49,8 +53,9 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 	else:
 		Globals.combo = 0
 		Globals.notes_missed += 1
+		SoundEffectPlayer.stream = note_fail_audio
+		SoundEffectPlayer.play()
 		print("Note missed")
-		
 
 	print("Combo: ", Globals.combo, " Notes hit: ", Globals.notes_hit, " Notes missed: ", Globals.notes_missed, " Perfect notes: ", Globals.perfect_hits, " Good notes: ", Globals.good_hits)
 	

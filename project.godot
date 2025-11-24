@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Globals="*res://globals.gd"
 Settings="*res://settings.gd"
 Conductor="*res://Game Logic/Conductor/conductor.tscn"
+SoundEffectPlayer="*res://Game Logic/SoundEffects/sound_effect_player.tscn"
 
 [display]
 
