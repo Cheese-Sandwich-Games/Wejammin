@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bvvahdvg1idnw" path="res://Assets/RetroGameDeviceFrame.png" id="8_344ge"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
-offsets = PackedFloat32Array(0, 0.99333334)
-colors = PackedColorArray(0.13333334, 0.1254902, 0.3019608, 1, 0.13333334, 0.1254902, 0.3019608, 1)
+offsets = PackedFloat32Array(0, 0.993333)
+colors = PackedColorArray(0.133333, 0.12549, 0.301961, 1, 0.133333, 0.12549, 0.301961, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jjvhh"]
 gradient = SubResource("Gradient_8gbba")
