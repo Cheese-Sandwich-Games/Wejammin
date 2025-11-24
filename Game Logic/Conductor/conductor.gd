@@ -64,6 +64,8 @@ func _ready() -> void:
 	sec_per_beat = 60.0 / song_data.bpm
 	Settings.note_speed = sec_per_beat * song_data.note_spawn_beat_offset
 	
+	finished.connect(_on_finished)
+	
 	play_song()
 
 
@@ -229,3 +231,8 @@ func _on_layer_toggle_timer_timeout() -> void:
 	if allow_drums_toggle:
 		# No toggle in the game for drums at the moment
 		allow_drums_toggle = false
+
+
+func _on_finished() -> void:
+	# TODO give a summary screen
+	pass
