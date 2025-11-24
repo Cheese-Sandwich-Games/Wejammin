@@ -1,6 +1,8 @@
 extends Control
 
 
+@export var cheering_audio: AudioStream
+
 @onready var bass_slider = $HBoxContainer/BassSlider
 @onready var pad_slider = $HBoxContainer/PadSlider
 @onready var arp_slider = $HBoxContainer/ArpSlider
@@ -21,6 +23,7 @@ func _on_suggest_layer_toggle(layer_to_toggle: int) -> void:
 	var layers: Array[String] = ["", "bass", "pad", "arp", "lead", "drums"]
 	print("Please toggle ", layers[layer_to_toggle])
 	layer_toggle_timer.start()
+	SoundEffectPlayer.play_sound(cheering_audio)
 	match layer_to_toggle:
 		1:
 			bass_toggle_indicator.show()

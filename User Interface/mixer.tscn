@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://rpltke1iyma0"]
+[gd_scene load_steps=11 format=3 uid="uid://rpltke1iyma0"]
 
 [ext_resource type="Script" uid="uid://cowr1rirly2hf" path="res://User Interface/mixer.gd" id="1_keesl"]
+[ext_resource type="AudioStream" uid="uid://be2swe7qarkws" path="res://Assets/SoundEffects/ui_cheer.wav" id="2_6k451"]
 [ext_resource type="Texture2D" uid="uid://cy44fllh7lh8p" path="res://Assets/MixerUI_Sliders.png" id="2_x6uig"]
 [ext_resource type="Texture2D" uid="uid://bkhgkk02g0v5l" path="res://Assets/toggle_indicator_frame1.png" id="3_b6eap"]
 [ext_resource type="Texture2D" uid="uid://wbhxaewqpxsg" path="res://Assets/toggle_indicator_frame2.png" id="4_6k451"]
@@ -35,6 +36,7 @@ offset_right = 128.0
 offset_bottom = 86.0
 mouse_filter = 2
 script = ExtResource("1_keesl")
+cheering_audio = ExtResource("2_6k451")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
