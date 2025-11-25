@@ -26,6 +26,7 @@ SoundEffectPlayer="*res://Game Logic/SoundEffects/sound_effect_player.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 window/stretch/scale=4.0
 
 [file_customization]
