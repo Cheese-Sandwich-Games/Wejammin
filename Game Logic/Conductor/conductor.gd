@@ -61,15 +61,15 @@ var pad_volume: float = 1.0:
 
 
 func _ready() -> void:
-	sec_per_beat = 60.0 / song_data.bpm
-	Settings.note_speed = sec_per_beat * song_data.note_spawn_beat_offset
-	
 	finished.connect(_on_finished)
-	
-	play_song()
 
 
 func play_song() -> void:
+	Globals.reset_score()
+	
+	sec_per_beat = 60.0 / song_data.bpm
+	Settings.note_speed = sec_per_beat * song_data.note_spawn_beat_offset
+	
 	# Use one of the layers (arp) to keep track of music progress here
 	stream = song_data.arp_layer
 	if not playing: play()
@@ -235,4 +235,5 @@ func _on_layer_toggle_timer_timeout() -> void:
 
 func _on_finished() -> void:
 	# TODO give a summary screen
-	pass
+	
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

@@ -29,3 +29,12 @@ var successful_toggles: int = 0:
 		if new_value > successful_toggles:
 			successful_toggle.emit()
 		successful_toggles = new_value
+
+
+func reset_score() -> void:
+	combo = 0
+	notes_hit = 0
+	notes_missed = 0
+	good_hits = 0
+	perfect_hits = 0
+	successful_toggles = 0

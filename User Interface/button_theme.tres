@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://pydtmdphabjf"]
+
+[ext_resource type="Texture2D" uid="uid://dtoc7f3333a4s" path="res://Assets/button_mockup.png" id="1_g5320"]
+
+[resource]
+texture = ExtResource("1_g5320")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
