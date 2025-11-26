@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://tpwwchdtu1yt"]
+[gd_scene load_steps=8 format=3 uid="uid://tpwwchdtu1yt"]
 
 [ext_resource type="Script" uid="uid://bm6dq7rgar4" path="res://Scenes/menu.gd" id="1_158mb"]
 [ext_resource type="Texture2D" uid="uid://f43huv61u2pq" path="res://Assets/MenuBG.png" id="1_xhh6f"]
 [ext_resource type="FontFile" uid="uid://nugvgdqe6t6c" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels.ttf" id="2_xhh6f"]
-[ext_resource type="StyleBox" uid="uid://pydtmdphabjf" path="res://User Interface/button_theme.tres" id="3_cayip"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://c4td1shof6k31" path="res://Assets/taskbar.png" id="5_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://dfd4lcdlgrx5j" path="res://Assets/settings_file.png" id="6_q3rjx"]
+[ext_resource type="FontFile" uid="uid://d8fssplohxbk" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels Tiny.ttf" id="7_6swd7"]
+[ext_resource type="PackedScene" uid="uid://dadvl1s7hj41x" path="res://User Interface/song_file.tscn" id="8_6swd7"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_158mb")
@@ -17,25 +16,53 @@ texture = ExtResource("1_xhh6f")
 centered = false
 
 [node name="GameNameLabel" type="Label" parent="."]
-offset_left = 110.0
-offset_top = 22.0
-offset_right = 202.0
-offset_bottom = 45.0
+offset_left = 225.0
+offset_top = 3.0
+offset_right = 317.0
+offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("2_xhh6f")
-text = "RemixR"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 8
+text = "RemixR, made by:
+Adolo_1,
+Klokwork,
+Ladria,
+UnspeakableLoser47,
+Marc"
+horizontal_alignment = 2
 
-[node name="StartButton" type="Button" parent="."]
-offset_left = 132.0
-offset_top = 67.0
-offset_right = 184.0
-offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("2_xhh6f")
-theme_override_styles/normal = ExtResource("3_cayip")
-theme_override_styles/pressed = ExtResource("3_cayip")
-theme_override_styles/hover = ExtResource("3_cayip")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_158mb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
-text = "Start"
+[node name="Taskbar" type="Sprite2D" parent="."]
+position = Vector2(0, 170)
+texture = ExtResource("5_wwsa2")
+centered = false
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[node name="SettingsFile" type="TextureRect" parent="."]
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 27.0
+offset_bottom = 32.0
+texture = ExtResource("6_q3rjx")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="SettingsFile"]
+layout_mode = 1
+offset_left = -5.0
+offset_top = 23.0
+offset_right = 35.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("7_6swd7")
+theme_override_font_sizes/font_size = 8
+text = "Settings"
+
+[node name="SongFile1" parent="." instance=ExtResource("8_6swd7")]
+offset_left = 9.0
+offset_top = 46.0
+offset_right = 27.0
+offset_bottom = 68.0
+song_name = "Song 1"
+
+[node name="SongFile2" parent="." instance=ExtResource("8_6swd7")]
+offset_left = 9.0
+offset_top = 83.0
+offset_right = 27.0
+offset_bottom = 105.0
+song_name = "Song 2"
