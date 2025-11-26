@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://buj54qo6y6mxv"]
+
+[ext_resource type="PackedScene" uid="uid://bxktf0hpwskfs" path="res://User Interface/settings_window.tscn" id="1_kqkdr"]
+[ext_resource type="Script" uid="uid://bbjkb6q11dvj1" path="res://User Interface/user_interface.gd" id="1_r82j8"]
+[ext_resource type="PackedScene" uid="uid://bv0v41gjclh2p" path="res://User Interface/song_overview.tscn" id="3_opcwn"]
+
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_r82j8")
+
+[node name="SettingsWindow" parent="." instance=ExtResource("1_kqkdr")]
+
+[node name="SongOverview" parent="." instance=ExtResource("3_opcwn")]

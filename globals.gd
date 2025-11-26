@@ -10,8 +10,11 @@ signal successful_toggle
 # Current music track statistics. Move this somewhere else if needed
 var combo: int:
 	set(new_value):
+		if new_value > combo:
+			highest_combo = new_value
 		combo = new_value
 		combo_changed.emit(new_value)
+var highest_combo: int
 var notes_hit: int
 var notes_missed: int
 var good_hits: int:
@@ -38,3 +41,7 @@ func reset_score() -> void:
 	good_hits = 0
 	perfect_hits = 0
 	successful_toggles = 0
+
+
+func calculate_ratings() -> int:
+	return combo + perfect_hits * 2 + good_hits + successful_toggles * 20

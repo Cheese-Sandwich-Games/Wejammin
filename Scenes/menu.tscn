@@ -37,9 +37,9 @@ texture = ExtResource("5_wwsa2")
 centered = false
 
 [node name="SettingsFile" type="TextureRect" parent="."]
-offset_left = 9.0
+offset_left = 14.0
 offset_top = 10.0
-offset_right = 27.0
+offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("6_q3rjx")
 stretch_mode = 2
@@ -55,16 +55,18 @@ theme_override_font_sizes/font_size = 8
 text = "Settings"
 
 [node name="SongFile1" parent="." instance=ExtResource("8_6swd7")]
-offset_left = 9.0
+offset_left = 14.0
 offset_top = 46.0
-offset_right = 27.0
+offset_right = 32.0
 offset_bottom = 68.0
-song_name = "Song 1"
+song_name = "Test Song"
 song_data = ExtResource("8_q3rjx")
 
 [node name="SongFile2" parent="." instance=ExtResource("8_6swd7")]
-offset_left = 9.0
+offset_left = 14.0
 offset_top = 83.0
-offset_right = 27.0
+offset_right = 32.0
 offset_bottom = 105.0
-song_name = "Song 2"
+song_name = "Unfinished"
+
+[connection signal="gui_input" from="SettingsFile" to="." method="_on_settings_file_gui_input"]

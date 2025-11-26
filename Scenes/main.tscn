@@ -29,22 +29,26 @@ centered = false
 position = Vector2(145, 9)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Ratings" parent="CanvasLayer" instance=ExtResource("6_344ge")]
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 125.0
 offset_bottom = 81.0
+mouse_filter = 2
 
 [node name="Audience" parent="CanvasLayer" instance=ExtResource("5_6bp64")]
 offset_left = 193.0
 offset_top = 95.0
 offset_right = 233.0
 offset_bottom = 135.0
+mouse_filter = 2
 
 [node name="OverlayTexture" type="TextureRect" parent="CanvasLayer"]
 offset_right = 320.0
 offset_bottom = 180.0
+mouse_filter = 2
 texture = ExtResource("8_344ge")
 
 [node name="DJ" parent="CanvasLayer" instance=ExtResource("4_344ge")]
@@ -52,8 +56,10 @@ offset_left = 193.0
 offset_top = 9.0
 offset_right = 233.0
 offset_bottom = 49.0
+mouse_filter = 2
 
 [node name="GameStatus" parent="CanvasLayer" instance=ExtResource("3_8gbba")]
+mouse_filter = 2
 
 [node name="Mixer" parent="CanvasLayer" instance=ExtResource("7_ynf5e")]
 offset_left = 6.0
@@ -68,4 +74,4 @@ offset_right = 187.0
 offset_bottom = 167.0
 theme_override_fonts/font = ExtResource("8_ynf5e")
 theme_override_font_sizes/font_size = 8
-text = "S  D   J  K"
+text = "D  F   J  K"

@@ -19,21 +19,17 @@ func _on_combo_changed(new_combo: int) -> void:
 	
 	combo_label.text = "Combo %s" % new_combo
 	score_label.text = "Notes hit %s / %s" % [Globals.notes_hit, Globals.notes_hit + Globals.notes_missed]
-	ratings_label.text = "Ratings %s" % calculate_ratings()
+	ratings_label.text = "Ratings %s" % Globals.calculate_ratings()
 
 
 func _on_note_hit() -> void:
 	await get_tree().process_frame
 	
 	score_label.text = "Notes hit %s / %s" % [Globals.notes_hit, Globals.notes_hit + Globals.notes_missed]
-	ratings_label.text = "Ratings %s" % calculate_ratings()
-
-
-func calculate_ratings() -> int:
-	return Globals.combo + Globals.perfect_hits * 2 + Globals.good_hits + Globals.successful_toggles * 20
+	ratings_label.text = "Ratings %s" % Globals.calculate_ratings()
 
 
 func _on_successful_toggle() -> void:
 	await get_tree().process_frame
 	
-	ratings_label.text = "Ratings %s" % calculate_ratings()
+	ratings_label.text = "Ratings %s" % Globals.calculate_ratings()

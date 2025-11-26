@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkbfr6gb2sgd3"]
+[gd_scene load_steps=5 format=3 uid="uid://dkbfr6gb2sgd3"]
 
 [ext_resource type="Texture2D" uid="uid://dw0tha6cnys2g" path="res://Assets/nineslice.png" id="1_fmcfc"]
 [ext_resource type="Script" uid="uid://q5kuwhem4c8o" path="res://User Interface/ratings.gd" id="1_w4a0u"]
 [ext_resource type="FontFile" uid="uid://nugvgdqe6t6c" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels.ttf" id="2_w4a0u"]
+[ext_resource type="Texture2D" uid="uid://cxldkx7613u7b" path="res://Assets/ratings_mockup.png" id="4_ypt50"]
 
 [node name="Ratings" type="Control"]
 layout_mode = 3
@@ -45,6 +46,10 @@ theme_override_fonts/font = ExtResource("2_w4a0u")
 theme_override_font_sizes/font_size = 8
 text = "Ratings 0"
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_ypt50")
 
 [node name="ScoreLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
