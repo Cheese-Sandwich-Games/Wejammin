@@ -5,7 +5,7 @@ extends AudioStreamPlayer
 signal spawn_notes_string
 signal suggest_layer_toggle
 
-@export var song_data: SongData
+var song_data: SongData
 
 var song_position: float = 0.0
 var song_position_in_beats: int = 0
@@ -64,7 +64,12 @@ func _ready() -> void:
 	finished.connect(_on_finished)
 
 
-func play_song() -> void:
+func play_song(new_song_data: SongData) -> void:
+	if new_song_data is SongData:
+		song_data = new_song_data
+	else:
+		return
+	
 	Globals.reset_score()
 	
 	sec_per_beat = 60.0 / song_data.bpm

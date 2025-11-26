@@ -42,7 +42,8 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 			print("Note perfect hit")
 			perfect_particle_emitter.emitting = true
 			sprite_ref.hide()
-			perfect_hit_sound.play()
+			# Remove perfect hit sound for now
+			#perfect_hit_sound.play()
 			await perfect_particle_emitter.finished
 		elif !is_hitted:
 			is_hitted = true
