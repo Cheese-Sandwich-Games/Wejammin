@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tpwwchdtu1yt"]
+[gd_scene load_steps=12 format=3 uid="uid://tpwwchdtu1yt"]
 
 [ext_resource type="Script" uid="uid://bm6dq7rgar4" path="res://Scenes/menu.gd" id="1_158mb"]
 [ext_resource type="Texture2D" uid="uid://f43huv61u2pq" path="res://Assets/MenuBG.png" id="1_xhh6f"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dadvl1s7hj41x" path="res://User Interface/song_file.tscn" id="8_6swd7"]
 [ext_resource type="Resource" uid="uid://bjasux1j3v6e" path="res://Game Logic/Highway/SongData.tres" id="8_q3rjx"]
 [ext_resource type="AudioStream" uid="uid://ddpjqulm68k8j" path="res://Music/mainmenu_loop.wav" id="9_6swd7"]
+[ext_resource type="Resource" uid="uid://lh4lai522xfe" path="res://Music/Song1/song_1_data.tres" id="9_rfqti"]
+[ext_resource type="Resource" uid="uid://bsuguoujprnhi" path="res://Music/Song2/song_2_data.tres" id="10_g8i7c"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_158mb")
@@ -68,7 +70,16 @@ offset_left = 14.0
 offset_top = 83.0
 offset_right = 32.0
 offset_bottom = 105.0
-song_name = "Unfinished"
+song_name = "Song 1"
+song_data = ExtResource("9_rfqti")
+
+[node name="SongFile3" parent="." instance=ExtResource("8_6swd7")]
+offset_left = 14.0
+offset_top = 123.0
+offset_right = 32.0
+offset_bottom = 145.0
+song_name = "Song 2"
+song_data = ExtResource("10_g8i7c")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_6swd7")

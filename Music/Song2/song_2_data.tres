@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=7 format=3 uid="uid://bsuguoujprnhi"]
+
+[ext_resource type="AudioStream" uid="uid://b67gqk2ai0vr8" path="res://Music/Song2/wip6_135bpm_arp.wav" id="1_7n618"]
+[ext_resource type="Script" uid="uid://wf852tnx72w3" path="res://Game Logic/Highway/songdata.gd" id="1_sa1ew"]
+[ext_resource type="AudioStream" uid="uid://bs07rii7jxbmd" path="res://Music/Song2/wip6_135bpm_bass.wav" id="2_sf6ur"]
+[ext_resource type="AudioStream" uid="uid://bkdwfhnsljxak" path="res://Music/Song2/wip6_135bpm_drums.wav" id="3_63u48"]
+[ext_resource type="AudioStream" uid="uid://brl0uqllmsmvi" path="res://Music/Song2/wip6_135bpm_lead.wav" id="4_s0uax"]
+[ext_resource type="AudioStream" uid="uid://dx6fh5oc2ecv7" path="res://Music/Song2/wip6_135bpm_pad.wav" id="5_713yr"]
+
+[resource]
+script = ExtResource("1_sa1ew")
+arp_layer = ExtResource("1_7n618")
+bass_layer = ExtResource("2_sf6ur")
+drums_layer = ExtResource("3_63u48")
+lead_layer = ExtResource("4_s0uax")
+pad_layer = ExtResource("5_713yr")
+metadata/_custom_type_script = "uid://wf852tnx72w3"

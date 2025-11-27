@@ -18,4 +18,6 @@ func _on_gui_input(event: InputEvent) -> void:
 			if not song_data is SongData:
 				return
 			Conductor.play_song(song_data)
+			UserInterface.play_transition()
+			await UserInterface.transition_finished
 			get_tree().change_scene_to_file("res://Scenes/main.tscn")

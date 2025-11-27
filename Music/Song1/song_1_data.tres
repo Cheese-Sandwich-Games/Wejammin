@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=6 format=3 uid="uid://lh4lai522xfe"]
+
+[ext_resource type="AudioStream" uid="uid://dq3eesj070jj8" path="res://Music/Song1/wip1_120bpm_arp.wav" id="1_clsub"]
+[ext_resource type="Script" uid="uid://wf852tnx72w3" path="res://Game Logic/Highway/songdata.gd" id="1_trqy2"]
+[ext_resource type="AudioStream" uid="uid://bff7ay0cvndna" path="res://Music/Song1/wip1_120bpm_bass.wav" id="2_rj81t"]
+[ext_resource type="AudioStream" uid="uid://uphishmsey06" path="res://Music/Song1/wip1_120bpm_lead.wav" id="3_06p06"]
+[ext_resource type="AudioStream" uid="uid://i6tp5ovthkm7" path="res://Music/Song1/wip1_120bpm_pad.wav" id="4_12qgf"]
+
+[resource]
+script = ExtResource("1_trqy2")
+bpm = 120
+arp_layer = ExtResource("1_clsub")
+bass_layer = ExtResource("2_rj81t")
+lead_layer = ExtResource("3_06p06")
+pad_layer = ExtResource("4_12qgf")
+metadata/_custom_type_script = "uid://wf852tnx72w3"
