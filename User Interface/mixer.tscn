@@ -100,7 +100,7 @@ texture = SubResource("AnimatedTexture_vjoy4")
 stretch_mode = 2
 
 [node name="LayerToggleTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 5.0
 
 [connection signal="gui_input" from="HBoxContainer/BassSlider" to="." method="_on_bass_slider_gui_input"]
 [connection signal="gui_input" from="HBoxContainer/PadSlider" to="." method="_on_pad_slider_gui_input"]

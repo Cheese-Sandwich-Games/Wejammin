@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cwk5fuislabvk" path="res://Assets/SoundEffects/ui_fail.wav" id="6_2fnpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h30m8"]
-size = Vector2(8, 8)
+size = Vector2(4, 8)
 
 [node name="MusicNote" type="Area2D" node_paths=PackedStringArray("perfect_particle_emitter", "sprite_ref")]
 script = ExtResource("1_h30m8")
@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_h30m8")
 [node name="PerfectParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 30
-lifetime = 0.45
+lifetime = 0.5
 one_shot = true
 speed_scale = 2.98
 explosiveness = 1.0
