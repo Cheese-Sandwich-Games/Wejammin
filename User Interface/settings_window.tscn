@@ -46,6 +46,7 @@ texture = ExtResource("10_1poux")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kb6kl"]
 
 [node name="SettingsWindow" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
