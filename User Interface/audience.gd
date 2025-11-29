@@ -13,7 +13,7 @@ func _ready() -> void:
 func _on_suggest_layer_toggle(layer_to_toggle: int) -> void:
 	# Layers are from 1 to 5. Bass, pad, arp, lead, drums
 	var layers: Array[String] = ["", "bass", "pad", "arp", "lead", "drums"]
-	request_label.text = "Please toggle %s" % layers[layer_to_toggle]
+	request_label.text = "Toggle %s" % layers[layer_to_toggle]
 	
 	# Add a fading message on the audience
 	if fade_tween is Tween:

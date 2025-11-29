@@ -54,11 +54,13 @@ func handle(is_hit: bool, is_perfect: bool = false) -> void:
 			#sprite_ref.hide()
 			#await good_particle_emitter.finished
 	else:
-		# When already on 0 combo play boo audio
-		if Globals.combo == 0:
-			SoundEffectPlayer.play_sound(boo_audio)
 		Globals.combo = 0
 		Globals.notes_missed += 1
+		Globals.consecutive_misses += 1
+		# Play boo audio when missing 5 notes in a row
+		if Globals.consecutive_misses > 4:
+			SoundEffectPlayer.play_sound(boo_audio)
+			Globals.consecutive_misses = 0
 		SoundEffectPlayer.play_sound(note_fail_audio)
 		print("Note missed")
 

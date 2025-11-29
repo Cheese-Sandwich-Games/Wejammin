@@ -32,6 +32,7 @@ var successful_toggles: int = 0:
 		if new_value > successful_toggles:
 			successful_toggle.emit()
 		successful_toggles = new_value
+var consecutive_misses: int = 0
 
 
 func reset_score() -> void:
