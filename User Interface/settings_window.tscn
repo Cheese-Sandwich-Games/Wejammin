@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxktf0hpwskfs"]
+[gd_scene load_steps=20 format=3 uid="uid://bxktf0hpwskfs"]
 
 [ext_resource type="Texture2D" uid="uid://ctxolfbahflur" path="res://Assets/window_nineslice.png" id="1_1k35a"]
 [ext_resource type="Script" uid="uid://bf3ikqpr3a57" path="res://User Interface/settings_window.gd" id="1_eyiun"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b1x8lx0ajrbtu" path="res://Assets/slider_pointer_highlight.png" id="4_woid0"]
 [ext_resource type="Texture2D" uid="uid://bo2cwityiwa04" path="res://Assets/slider_fill.png" id="5_8m5k3"]
 [ext_resource type="Texture2D" uid="uid://b0hvoajx63bal" path="res://Assets/close_button.png" id="8_kqmlu"]
+[ext_resource type="AudioStream" uid="uid://be2swe7qarkws" path="res://Assets/SoundEffects/ui_cheer.wav" id="9_1poux"]
 [ext_resource type="Texture2D" uid="uid://bp4x3nmdvn2hj" path="res://Assets/close_button_clicked.png" id="9_eyiun"]
 [ext_resource type="Texture2D" uid="uid://b0mk5mofv684r" path="res://Assets/close_button_highlight.png" id="10_1poux"]
 
@@ -45,7 +46,6 @@ texture = ExtResource("10_1poux")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kb6kl"]
 
 [node name="SettingsWindow" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,12 +98,12 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MainVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0946, 0.09614, 0.11, 1)
 theme_override_fonts/font = ExtResource("2_2joc2")
 theme_override_font_sizes/font_size = 8
-text = "Volume"
+text = "Main volume"
 
 [node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -117,6 +117,27 @@ max_value = 1.0
 step = 0.001
 script = ExtResource("3_pns5f")
 bus_name = "Master"
+
+[node name="SfxVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0946, 0.09614, 0.11, 1)
+theme_override_fonts/font = ExtResource("2_2joc2")
+theme_override_font_sizes/font_size = 8
+text = "SFX volume"
+
+[node name="VolumeSlider2" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("4_8m5k3")
+theme_override_icons/grabber_highlight = ExtResource("4_woid0")
+theme_override_styles/slider = SubResource("StyleBoxTexture_woid0")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_lh30k")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_x52hs")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_pns5f")
+bus_name = "sfx"
+audio_cue = ExtResource("9_1poux")
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 1

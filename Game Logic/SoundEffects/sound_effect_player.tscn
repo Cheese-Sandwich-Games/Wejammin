@@ -7,4 +7,5 @@
 [node name="SoundEffectPlayer" type="AudioStreamPlayer"]
 stream = SubResource("AudioStreamPolyphonic_tkpjw")
 max_polyphony = 5
+bus = &"sfx"
 script = ExtResource("1_tkpjw")
