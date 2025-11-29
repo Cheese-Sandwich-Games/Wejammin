@@ -6,6 +6,7 @@ signal combo_changed
 signal good_hit
 signal perfect_hit
 signal successful_toggle
+signal lane_action
 
 # Current music track statistics. Move this somewhere else if needed
 var combo: int:
@@ -33,6 +34,11 @@ var successful_toggles: int = 0:
 			successful_toggle.emit()
 		successful_toggles = new_value
 var consecutive_misses: int = 0
+var last_note_hit: bool = false
+var last_lane_hit: int = 0:
+	set(new_value):
+		last_lane_hit = new_value
+		lane_action.emit(new_value, last_note_hit)
 
 
 func reset_score() -> void:

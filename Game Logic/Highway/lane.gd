@@ -42,12 +42,18 @@ func _handle_note_hit(note: MusicNote) -> void:
 		if note.global_position.distance_to(note_hit_area.global_position) <= NOTE_ERROR_MARGIN:
 			# Note has been perfectly hit
 			note.handle(true, true)
+			Globals.last_note_hit = true
+			Globals.last_lane_hit = lane_id
 		else:
 			note.handle(true, false)
+			Globals.last_note_hit = true
+			Globals.last_lane_hit = lane_id
 	else:
 		if note.global_position.distance_to(note_hit_area.global_position) <= NOTE_HANDLE_MARGIN:
 			# Note has been missed
 			note.handle(false)
+			Globals.last_note_hit = false
+			Globals.last_lane_hit = lane_id
 
 
 func spawn_note() -> void:

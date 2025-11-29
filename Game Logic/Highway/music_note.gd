@@ -75,3 +75,5 @@ func _on_life_timer_timeout() -> void:
 	if is_hitted:
 		return
 	handle(false)
+	Globals.last_note_hit = false
+	Globals.last_lane_hit = get_parent().get_parent().get_index() + 1
