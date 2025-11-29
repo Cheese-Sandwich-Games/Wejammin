@@ -75,9 +75,9 @@ song_data = ExtResource("9_rfqti")
 
 [node name="SongFile3" parent="." instance=ExtResource("8_6swd7")]
 offset_left = 14.0
-offset_top = 123.0
+offset_top = 121.0
 offset_right = 32.0
-offset_bottom = 145.0
+offset_bottom = 143.0
 song_name = "Song 2"
 song_data = ExtResource("10_g8i7c")
 

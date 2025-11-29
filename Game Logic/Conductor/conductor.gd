@@ -53,6 +53,14 @@ var pad_volume: float = 1.0:
 		arp_volume = new_value
 		set_audio_volume(5, new_value)
 
+# Testing making a song
+var played_notes: Dictionary[int, String] = {}
+var lane_1_note: String = "0"
+var lane_2_note: String = "0"
+var lane_3_note: String = "0"
+var lane_4_note: String = "0"
+var save_path: String = "res://songsave.txt"
+
 @onready var bass_layer = $BassLayer
 @onready var drums_layer = $DrumsLayer
 @onready var lead_layer = $LeadLayer
@@ -102,7 +110,13 @@ func _physics_process(_delta: float) -> void:
 		
 		# When moving onto the next beat of the song spawn notes
 		if new_position_in_beats != song_position_in_beats:
+			if lane_1_note != "0" or lane_2_note != "0" or lane_3_note != "0" or lane_4_note != "0":
+				played_notes.set(song_position_in_beats, lane_1_note + lane_2_note + lane_3_note + lane_4_note)
 			song_position_in_beats = new_position_in_beats
+			lane_1_note = "0"
+			lane_2_note = "0"
+			lane_3_note = "0"
+			lane_4_note = "0"
 			
 			# Check if there should be a layer toggle
 			if song_data.layer_toggles.has(song_position_in_beats):
@@ -241,3 +255,19 @@ func _on_layer_toggle_timer_timeout() -> void:
 func _on_finished() -> void:
 	UserInterface.show_song_overview()
 	#get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("lane_1"):
+		lane_1_note = "1"
+	if event.is_action_pressed("lane_2"):
+		lane_2_note = "1"
+	if event.is_action_pressed("lane_3"):
+		lane_3_note = "1"
+	if event.is_action_pressed("lane_4"):
+		lane_4_note = "1"
+	#if event.is_action_pressed("test_button"):
+		#var file = FileAccess.open(save_path, FileAccess.WRITE)
+		#var jstr = JSON.stringify(played_notes)
+		#file.store_line(jstr)
+		#print(played_notes)
