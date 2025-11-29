@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxktf0hpwskfs"]
+[gd_scene load_steps=27 format=3 uid="uid://bxktf0hpwskfs"]
 
 [ext_resource type="Texture2D" uid="uid://ctxolfbahflur" path="res://Assets/window_nineslice.png" id="1_1k35a"]
 [ext_resource type="Script" uid="uid://bf3ikqpr3a57" path="res://User Interface/settings_window.gd" id="1_eyiun"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://be2swe7qarkws" path="res://Assets/SoundEffects/ui_cheer.wav" id="9_1poux"]
 [ext_resource type="Texture2D" uid="uid://bp4x3nmdvn2hj" path="res://Assets/close_button_clicked.png" id="9_eyiun"]
 [ext_resource type="Texture2D" uid="uid://b0mk5mofv684r" path="res://Assets/close_button_highlight.png" id="10_1poux"]
+[ext_resource type="Texture2D" uid="uid://dtoc7f3333a4s" path="res://Assets/button_mockup.png" id="10_juk3a"]
+[ext_resource type="Script" uid="uid://wnhc33h7pk5n" path="res://User Interface/remap_button.gd" id="11_6vp12"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_woid0"]
 texture = ExtResource("3_yi71x")
@@ -34,6 +36,31 @@ texture_margin_top = 2.0
 texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kb6kl"]
+texture = ExtResource("10_juk3a")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuh1x"]
+texture = ExtResource("10_juk3a")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuymc"]
+texture = ExtResource("10_juk3a")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r7l0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kdyqp"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_juk3a"]
 texture = ExtResource("8_kqmlu")
 
@@ -54,9 +81,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -60.0
+offset_top = -78.25
 offset_right = 50.0
-offset_bottom = 60.0
+offset_bottom = 78.25
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eyiun")
@@ -139,6 +166,88 @@ step = 0.001
 script = ExtResource("3_pns5f")
 bus_name = "sfx"
 audio_cue = ExtResource("9_1poux")
+
+[node name="ControlsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0946, 0.09614, 0.11, 1)
+theme_override_fonts/font = ExtResource("2_2joc2")
+theme_override_font_sizes/font_size = 8
+text = "Controls"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RemapButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.2975, 0.301, 0.35, 1)
+theme_override_colors/font_pressed_color = Color(0.13668, 0.13430001, 0.17, 1)
+theme_override_colors/font_hover_color = Color(0.486, 0.504, 0.54, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13333334, 0.16862746, 1)
+theme_override_fonts/font = ExtResource("2_2joc2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_kb6kl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xuh1x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xuymc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r7l0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kdyqp")
+text = "Action - Button"
+script = ExtResource("11_6vp12")
+remapping_action = "lane_1"
+
+[node name="RemapButton2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.2975, 0.301, 0.35, 1)
+theme_override_colors/font_pressed_color = Color(0.13668, 0.13430001, 0.17, 1)
+theme_override_colors/font_hover_color = Color(0.486, 0.504, 0.54, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13333334, 0.16862746, 1)
+theme_override_fonts/font = ExtResource("2_2joc2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_kb6kl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xuh1x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xuymc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r7l0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kdyqp")
+text = "Action - Button"
+script = ExtResource("11_6vp12")
+remapping_action = "lane_2"
+
+[node name="RemapButton3" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.2975, 0.301, 0.35, 1)
+theme_override_colors/font_pressed_color = Color(0.13668, 0.13430001, 0.17, 1)
+theme_override_colors/font_hover_color = Color(0.486, 0.504, 0.54, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13333334, 0.16862746, 1)
+theme_override_fonts/font = ExtResource("2_2joc2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_kb6kl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xuh1x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xuymc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r7l0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kdyqp")
+text = "Action - Button"
+script = ExtResource("11_6vp12")
+remapping_action = "lane_3"
+
+[node name="RemapButton4" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.2975, 0.301, 0.35, 1)
+theme_override_colors/font_pressed_color = Color(0.13668, 0.13430001, 0.17, 1)
+theme_override_colors/font_hover_color = Color(0.486, 0.504, 0.54, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13333334, 0.16862746, 1)
+theme_override_fonts/font = ExtResource("2_2joc2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_kb6kl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xuh1x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xuymc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r7l0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kdyqp")
+text = "Action - Button"
+script = ExtResource("11_6vp12")
+remapping_action = "lane_4"
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 1
