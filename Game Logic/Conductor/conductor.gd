@@ -66,6 +66,7 @@ var save_path: String = "res://songsave.txt"
 @onready var lead_layer = $LeadLayer
 @onready var pad_layer = $PadLayer
 @onready var layer_toggle_timer = $LayerToggleTimer
+@onready var song_start_timer = $SongStartTimer
 
 
 func _ready() -> void:
@@ -77,6 +78,9 @@ func play_song(new_song_data: SongData) -> void:
 		song_data = new_song_data
 	else:
 		return
+	
+	song_start_timer.start()
+	await song_start_timer.timeout
 	
 	Globals.reset_score()
 	

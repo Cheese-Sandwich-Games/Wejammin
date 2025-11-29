@@ -62,7 +62,7 @@ offset_left = 14.0
 offset_top = 46.0
 offset_right = 32.0
 offset_bottom = 68.0
-song_name = "Test Song"
+song_name = "Small Song"
 song_data = ExtResource("8_q3rjx")
 
 [node name="SongFile2" parent="." instance=ExtResource("8_6swd7")]
