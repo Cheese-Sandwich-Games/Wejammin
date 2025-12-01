@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://rpltke1iyma0"]
+
+[ext_resource type="Script" uid="uid://cowr1rirly2hf" path="res://User Interface/mixer.gd" id="1_keesl"]
+[ext_resource type="AudioStream" uid="uid://be2swe7qarkws" path="res://Assets/SoundEffects/ui_cheer.wav" id="2_6k451"]
+[ext_resource type="Texture2D" uid="uid://cy44fllh7lh8p" path="res://Assets/MixerUI_Sliders.png" id="2_x6uig"]
+[ext_resource type="Texture2D" uid="uid://bkhgkk02g0v5l" path="res://Assets/toggle_indicator_frame1.png" id="3_b6eap"]
+[ext_resource type="Texture2D" uid="uid://wbhxaewqpxsg" path="res://Assets/toggle_indicator_frame2.png" id="4_6k451"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_344ge"]
+atlas = ExtResource("2_x6uig")
+region = Rect2(150, 0, 30, 80)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vjoy4"]
+frames = 2
+frame_0/texture = ExtResource("3_b6eap")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("4_6k451")
+frame_1/duration = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bp64"]
+atlas = ExtResource("2_x6uig")
+region = Rect2(150, 80, 30, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynf5e"]
+atlas = ExtResource("2_x6uig")
+region = Rect2(150, 160, 30, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hptm8"]
+atlas = ExtResource("2_x6uig")
+region = Rect2(150, 240, 30, 80)
+
+[node name="Mixer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 86.0
+mouse_filter = 2
+script = ExtResource("1_keesl")
+cheering_audio = ExtResource("2_6k451")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="BassSlider" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_344ge")
+stretch_mode = 2
+
+[node name="ToggleIndicator" type="TextureRect" parent="HBoxContainer/BassSlider"]
+visible = false
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 80.0
+texture = SubResource("AnimatedTexture_vjoy4")
+stretch_mode = 2
+
+[node name="PadSlider" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6bp64")
+stretch_mode = 2
+
+[node name="ToggleIndicator" type="TextureRect" parent="HBoxContainer/PadSlider"]
+visible = false
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 80.0
+texture = SubResource("AnimatedTexture_vjoy4")
+stretch_mode = 2
+
+[node name="ArpSlider" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ynf5e")
+stretch_mode = 2
+
+[node name="ToggleIndicator" type="TextureRect" parent="HBoxContainer/ArpSlider"]
+visible = false
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 80.0
+texture = SubResource("AnimatedTexture_vjoy4")
+stretch_mode = 2
+
+[node name="LeadSlider" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hptm8")
+stretch_mode = 2
+
+[node name="ToggleIndicator" type="TextureRect" parent="HBoxContainer/LeadSlider"]
+visible = false
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 80.0
+texture = SubResource("AnimatedTexture_vjoy4")
+stretch_mode = 2
+
+[node name="LayerToggleTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="gui_input" from="HBoxContainer/BassSlider" to="." method="_on_bass_slider_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/PadSlider" to="." method="_on_pad_slider_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/ArpSlider" to="." method="_on_arp_slider_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/LeadSlider" to="." method="_on_lead_slider_gui_input"]
+[connection signal="timeout" from="LayerToggleTimer" to="." method="_on_layer_toggle_timer_timeout"]

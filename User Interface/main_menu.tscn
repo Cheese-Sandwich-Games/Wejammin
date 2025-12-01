@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1md5nfgqdesb"]
+
+[ext_resource type="Script" uid="uid://ldrs41mn7olg" path="res://User Interface/main_menu.gd" id="1_pisfa"]
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("quit_button", "start_game_button", "settings_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pisfa")
+quit_button = NodePath("Quit")
+start_game_button = NodePath("Start Game")
+settings_button = NodePath("Settings")
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start Game" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Settings" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

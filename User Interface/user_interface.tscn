@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://buj54qo6y6mxv"]
+
+[ext_resource type="PackedScene" uid="uid://bxktf0hpwskfs" path="res://User Interface/settings_window.tscn" id="1_kqkdr"]
+[ext_resource type="Script" uid="uid://bbjkb6q11dvj1" path="res://User Interface/user_interface.gd" id="1_r82j8"]
+[ext_resource type="PackedScene" uid="uid://bv0v41gjclh2p" path="res://User Interface/song_overview.tscn" id="3_opcwn"]
+[ext_resource type="Texture2D" uid="uid://bpt041uvmopse" path="res://Assets/Wave_OS_OpenAnim.png" id="4_4gg28"]
+
+[sub_resource type="Animation" id="Animation_4gg28"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l7kh5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7kh5"]
+_data = {
+&"RESET": SubResource("Animation_l7kh5"),
+&"transition": SubResource("Animation_4gg28")
+}
+
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_r82j8")
+
+[node name="SettingsWindow" parent="." instance=ExtResource("1_kqkdr")]
+
+[node name="SongOverview" parent="." instance=ExtResource("3_opcwn")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_4gg28")
+centered = false
+hframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l7kh5")
+}

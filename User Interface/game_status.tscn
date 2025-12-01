@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b517xhew7qoin"]
+
+[ext_resource type="Texture2D" uid="uid://bwuqmlb3yuewv" path="res://Assets/note_hit_types.png" id="1_4wa7s"]
+[ext_resource type="Script" uid="uid://bh0vluee3x7ny" path="res://User Interface/game_status.gd" id="1_44bcr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44bcr"]
+atlas = ExtResource("1_4wa7s")
+region = Rect2(0, 0, 64, 32)
+
+[node name="GameStatus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_44bcr")
+
+[node name="NoteHitTexture" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -52.0
+offset_right = 32.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 16)
+texture = SubResource("AtlasTexture_44bcr")

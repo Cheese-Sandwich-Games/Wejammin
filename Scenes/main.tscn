@@ -1,25 +1,79 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdfo2ktxggpi6"]
+[gd_scene load_steps=12 format=3 uid="uid://bdfo2ktxggpi6"]
 
-[ext_resource type="PackedScene" uid="uid://w4pjbq0cqg2i" path="res://Components/pause_scene.tscn" id="1_jjgbg"]
-[ext_resource type="Material" uid="uid://bncmkgal7jj37" path="res://Shading/shaderMat.tres" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://rg04q5kbhhcn" path="res://Game Logic/Highway/highway.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://b517xhew7qoin" path="res://User Interface/game_status.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://qcecjbxhboi" path="res://User Interface/dj.tscn" id="4_344ge"]
+[ext_resource type="PackedScene" uid="uid://ewu2xy5rcwv7" path="res://User Interface/audience.tscn" id="5_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dkbfr6gb2sgd3" path="res://User Interface/ratings.tscn" id="6_344ge"]
+[ext_resource type="PackedScene" uid="uid://rpltke1iyma0" path="res://User Interface/mixer.tscn" id="7_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://bvvahdvg1idnw" path="res://Assets/RetroGameDeviceFrame.png" id="8_344ge"]
+[ext_resource type="FontFile" uid="uid://d8fssplohxbk" path="res://Assets/Fonts/Gamey Pixels/Gamey Pixels Tiny.ttf" id="8_ynf5e"]
+[ext_resource type="Script" uid="uid://0we2n1h1s7si" path="res://User Interface/help_label.gd" id="9_ynf5e"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_bo1nx"]
+[sub_resource type="Gradient" id="Gradient_8gbba"]
+offsets = PackedFloat32Array(0, 0.993333)
+colors = PackedColorArray(0.133333, 0.12549, 0.301961, 1, 0.133333, 0.12549, 0.301961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jjvhh"]
+gradient = SubResource("Gradient_8gbba")
+width = 320
+height = 180
+fill_to = Vector2(0, 1)
 
 [node name="Main" type="Node2D"]
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_jjgbg")]
-position = Vector2(512, 256)
+[node name="Background" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_jjvhh")
+centered = false
 
-[node name="Camera2D" type="Camera2D" parent="."]
-process_mode = 3
-position = Vector2(592, 328)
+[node name="Highway" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(145, 9)
 
-[node name="CrtShader" type="CanvasLayer" parent="Camera2D"]
-process_mode = 3
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
-[node name="Shader" type="MeshInstance2D" parent="Camera2D/CrtShader"]
-process_mode = 4
-material = ExtResource("2_bo1nx")
-position = Vector2(579.1332, 316.20142)
-scale = Vector2(-1170.5518, 663.96075)
-mesh = SubResource("BoxMesh_bo1nx")
+[node name="Ratings" parent="CanvasLayer" instance=ExtResource("6_344ge")]
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 125.0
+offset_bottom = 81.0
+mouse_filter = 2
+
+[node name="Audience" parent="CanvasLayer" instance=ExtResource("5_6bp64")]
+offset_left = 193.0
+offset_top = 95.0
+offset_right = 233.0
+offset_bottom = 135.0
+mouse_filter = 2
+
+[node name="OverlayTexture" type="TextureRect" parent="CanvasLayer"]
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+texture = ExtResource("8_344ge")
+
+[node name="DJ" parent="CanvasLayer" instance=ExtResource("4_344ge")]
+offset_left = 193.0
+offset_top = 9.0
+offset_right = 233.0
+offset_bottom = 49.0
+mouse_filter = 2
+
+[node name="GameStatus" parent="CanvasLayer" instance=ExtResource("3_8gbba")]
+mouse_filter = 2
+
+[node name="Mixer" parent="CanvasLayer" instance=ExtResource("7_ynf5e")]
+offset_left = 6.0
+offset_top = 92.0
+offset_right = 142.0
+offset_bottom = 181.0
+
+[node name="HelpLabel" type="Label" parent="CanvasLayer"]
+offset_left = 143.0
+offset_top = 144.0
+offset_right = 187.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("8_ynf5e")
+theme_override_font_sizes/font_size = 8
+text = "D  F   J  K"
+script = ExtResource("9_ynf5e")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpcv5xain2d7s"]
+
+[ext_resource type="Script" uid="uid://cigysnw2vare0" path="res://Game Logic/Conductor/conductor.gd" id="1_8exfk"]
+
+[node name="Conductor" type="AudioStreamPlayer"]
+bus = &"arp"
+script = ExtResource("1_8exfk")
+
+[node name="BassLayer" type="AudioStreamPlayer" parent="."]
+bus = &"bass"
+
+[node name="DrumsLayer" type="AudioStreamPlayer" parent="."]
+bus = &"drums"
+
+[node name="LeadLayer" type="AudioStreamPlayer" parent="."]
+bus = &"lead"
+
+[node name="PadLayer" type="AudioStreamPlayer" parent="."]
+bus = &"pad"
+
+[node name="LayerToggleTimer" type="Timer" parent="."]
+wait_time = 5.1000000000000005
+
+[node name="SongStartTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="LayerToggleTimer" to="." method="_on_layer_toggle_timer_timeout"]
