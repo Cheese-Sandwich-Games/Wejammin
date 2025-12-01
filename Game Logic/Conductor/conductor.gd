@@ -82,6 +82,7 @@ func play_song(new_song_data: SongData) -> void:
 	song_start_timer.start()
 	await song_start_timer.timeout
 	
+	played_notes.clear()
 	Globals.reset_score()
 	
 	sec_per_beat = 60.0 / song_data.bpm
@@ -270,8 +271,9 @@ func _input(event: InputEvent) -> void:
 		lane_3_note = "1"
 	if event.is_action_pressed("lane_4"):
 		lane_4_note = "1"
-	#if event.is_action_pressed("test_button"):
+	if event.is_action_pressed("test_button"):
+		# Store the notes in a file
 		#var file = FileAccess.open(save_path, FileAccess.WRITE)
 		#var jstr = JSON.stringify(played_notes)
 		#file.store_line(jstr)
-		#print(played_notes)
+		print(played_notes)
